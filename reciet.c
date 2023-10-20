@@ -25,7 +25,7 @@ int main() {
 	double eggSubtotal = cEgg * qEgg;
 	double totalCost = milkSubtotal + flourSubtotal + eggSubtotal;
 
-	printf("\n%-20s%-20s%-20s%-20s\n", "Description", "Qty", "Unit Cost", "Subtotal");
+	printf("\n%-20s%-20s%-20s%s\n", "Description", "Qty", "Unit Cost", "Subtotal");
 	printf("%-20s%3d%26.2lf%19.2lf\n", "Milk", qMilk, cMilk, milkSubtotal);
 	printf("%-20s%3d%26.2lf%19.2lf\n", "Flour", qFlour, cFlour, flourSubtotal);
 	printf("%-20s%3d%26.2lf%19.2lf\n", "Egg", qEgg, cEgg, eggSubtotal);
