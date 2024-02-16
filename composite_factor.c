@@ -18,9 +18,11 @@ int main(void) {
 			}
 		}
 
-		if (isComposite) printf("{%d} ", i);
-		else printf("%d ", i);
+		if (isComposite)
+			printf("{%d} ", i);
+		else
+			printf("%d ", i);
 	}
-	
+
 	return 0;
 }
