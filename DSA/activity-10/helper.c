@@ -36,7 +36,7 @@ int allocSpace(Cursor* cursor) {
 void deallocSpace(Cursor* cursor, int i) {
 	if (i >= 0 && i < MAX) {
 		cursor->nodes[i].link = cursor->avail;
-	    cursor->avail = i;
+		cursor->avail = i;
 	}
 }
 
@@ -46,10 +46,10 @@ void insertFirst(Cursor* cursor, List* head, int data) {
 	if (i != -1) {
 		Node* node = cursor->nodes + i;
 
-	    node->data = data;
-	    node->link = *head;
+		node->data = data;
+		node->link = *head;
 
-	    *head = i;
+		*head = i;
 	}
 }
 
