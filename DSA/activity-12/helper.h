@@ -17,6 +17,6 @@ Set* intersectionSet(Set*, Set*);
 Set* differenceSet(Set*, Set*);
 Set* complementSet(Set*);
 
-bool isEqualSetSortedTest(Set*, Set*);
+bool isEqualSet(Set*, Set*);
 
 #endif

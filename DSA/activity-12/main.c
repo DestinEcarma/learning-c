@@ -73,7 +73,7 @@ int main() {
 	printf("Sorted B: ");
 	printSet(&SortedB);
 
-	printf("Is equal (sorted): %s\n", isEqualSetSortedTest(&SortedA, &SortedB) ? "true" : "false");
+	printf("Is equal (sorted): %s\n", isEqualSet(&SortedA, &SortedB) ? "true" : "false");
 
 	return 0;
 }

@@ -66,7 +66,7 @@ Set* complementSet(Set* A) {
 	return result;
 }
 
-bool isEqualSetSortedTest(Set* A, Set* B) {
+bool isEqualSet(Set* A, Set* B) {
 	int i = 0;
 	int j = 0;
 
