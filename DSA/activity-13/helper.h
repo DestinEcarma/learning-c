@@ -9,6 +9,7 @@ typedef struct node {
 } Node, *Set;
 
 void printSet(Set);
+int lengthSet(Set);
 
 void initSet(Set*);
 void insertFirst(Set*, int);
@@ -19,8 +20,6 @@ void deleteFirst(Set*);
 void deleteLast(Set*);
 void deleteData(Set*, int);
 void makeNull(Set*);
-
-int lengthSet(Set);
 
 bool isEqualSetSortedTest(Set, Set);
 bool isEqualSetUnsortedTest(Set, Set);

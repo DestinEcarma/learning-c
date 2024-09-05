@@ -36,13 +36,13 @@ int main() {
 	initSet(&unsortedSetB);
 
 	insertFirst(&unsortedSetA, 1);
+	insertFirst(&unsortedSetA, 4);
 	insertFirst(&unsortedSetA, 2);
 	insertFirst(&unsortedSetA, 3);
-	insertFirst(&unsortedSetA, 4);
 
 	insertFirst(&unsortedSetB, 1);
 	insertFirst(&unsortedSetB, 2);
-	insertFirst(&unsortedSetB, 2);
+	insertFirst(&unsortedSetB, 3);
 	insertFirst(&unsortedSetB, 4);
 
 	printf("Set A: ");

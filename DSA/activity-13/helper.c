@@ -15,6 +15,16 @@ void printSet(Set set) {
 	printf("\n");
 }
 
+int lengthSet(Set set) {
+	int length = 0;
+
+	for (Node* curr = set; curr != NULL; curr = curr->next) {
+		length++;
+	}
+
+	return length;
+}
+
 void initSet(Set* set) {
 	*set = NULL;
 }
@@ -105,16 +115,6 @@ void makeNull(Set* set) {
 	while (*set != NULL) {
 		deleteFirst(set);
 	}
-}
-
-int lengthSet(Set set) {
-	int length = 0;
-
-	for (Node* curr = set; curr != NULL; curr = curr->next) {
-		length++;
-	}
-
-	return length;
 }
 
 bool isEqualSetSortedTest(Set A, Set B) {
