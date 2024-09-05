@@ -91,9 +91,9 @@ boolean isEqualListOrderedTest(Cursor* cursor, List A, List B) {
 }
 
 boolean isEqualListUnorderedTest(Cursor cursor, List A, List B) {
-	while (A != -1 && B != -1) {
-		List *trav = &B;
+	List *trav = &B;
 
+	while (A != -1 && *trav != -1) {
 		while (
 			*trav != -1 &&
 			cursor.nodes[A].data != cursor.nodes[*trav].data
