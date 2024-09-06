@@ -2,13 +2,22 @@
 
 #include "helper.h"
 
+typedef struct node {
+	int data;
+	struct node* next;
+} Node;
+
 int main() {
-	int value;
+	Node temp = { 0, NULL };
+	Node node = { -1, &temp };
 
-	printf("Enter a value: ");
-	scanf("%d", &value);
+	printf("Binary representation of node:\n");
+	displayBitPattern(&node, sizeof(node));
 
-	displayBitPattern(value);
+	printf("\nBinary representation of node.next:\n");
+	displayBitPattern(&node.next, sizeof(Node*));
+
+	printf("\nAddress of temp: %p", node.next);
 
 	return 0;
 }

@@ -2,22 +2,35 @@
 
 #include "helper.h"
 
-void displayBitPattern(int value) {
-	int byte = sizeof(value);
-	int size = byte * 8;
+void displayBitPattern(void* value, int size) {
+	unsigned char* bytes = (unsigned char*) value;
 
-	for (int i = size - 1; i >= 0 && (value >> i & 1) == 0; i--) {
-		if (i % 8 == 0) {
-			byte--;
+	for (int i = size - 1; i >= 0 && size > 1; i--) {
+		int j = 7;
+
+		while (j >= 0) {
+			if ((bytes[i] >> j & 1) == 1) {
+				i = -1;
+			}
+
+			j--;
+		}
+
+		if (j < 0 && i >= 0) {
+			size--;
 		}
 	}
 
-	for (int i = byte * 8 - 1; i >= 0; i--) {
-		printf("%d", value >> i & 1);
+	for (int i = size - 1; i >= 0; i--) {
+		for (int j = 7; j >= 0; j--) {
+			printf("%d", bytes[i] >> j & 1);
 
-		if (i % 4 == 0) {
-			printf(" ");
+			if (j == 4) {
+				printf(" ");
+			}
 		}
+
+		printf(" ");
 	}
 
 	printf("\n");
