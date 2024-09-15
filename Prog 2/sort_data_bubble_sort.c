@@ -50,7 +50,8 @@ Info *sortByLastNameAsc(Info var[MAX]) {
 }
 
 void printInfo(Info *var) {
-	printf("%s\t%s\t\t%s\t%d\n", var->fname, var->lname, var->program, var->age);
+	printf("%s\t%s\t\t%s\t%d\n", var->fname, var->lname, var->program,
+		   var->age);
 }
 
 void printInfoList(Info var[MAX]) {

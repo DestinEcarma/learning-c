@@ -5,7 +5,7 @@ int main(void) {
 	char str[100];
 
 	printf("Enter a string: ");
-	gets(str);
+	fgets(str, 100, stdin);
 
 	int *uniqueChars = calloc(128, sizeof(int));
 
@@ -14,7 +14,8 @@ int main(void) {
 	}
 
 	for (int i = 0; i < 128; i++) {
-		if (!uniqueChars[i]) continue;
+		if (!uniqueChars[i])
+			continue;
 		printf("%c: %d\n", i, uniqueChars[i]);
 	}
 

@@ -33,10 +33,13 @@ int main() {
 	int fanConsumption = 12 * fanHours;
 	int tvConsumption = 27 * tvHours;
 	int refConsumption = 117 * refHours;
-	int totalConsumption = airconConsumption + fanConsumption + tvConsumption + refConsumption;
+	int totalConsumption =
+		airconConsumption + fanConsumption + tvConsumption + refConsumption;
 
-	double basicCharges = ((totalConsumption > 100000) ? 100000 : totalConsumption) * 0.05;
-	double excessCharges = (totalConsumption > 100000) ? ((totalConsumption - 100000) * 0.03) : 0;
+	double basicCharges =
+		((totalConsumption > 100000) ? 100000 : totalConsumption) * 0.05;
+	double excessCharges =
+		(totalConsumption > 100000) ? ((totalConsumption - 100000) * 0.03) : 0;
 	double totalCharges = excessCharges + basicCharges;
 
 	printf("\n\n%-25s%20d", "Total Usage (hrs):", totalUsage);

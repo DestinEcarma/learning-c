@@ -16,18 +16,25 @@ int main(void) {
 	for (y = 0; y < h; y++) {
 		for (x = 0; x < w + 2; x++) {
 			if (y > 0 && y < h - 1) {
-				if (x > 0 && x < w + 1) printf("*");
-				else printf(" ");
+				if (x > 0 && x < w + 1)
+					printf("*");
+				else
+					printf(" ");
 			} else {
 				if (y == 0) {
 					if (perfectHalf) {
-						if (x == half || x == half + 1) printf("*");
-						else printf(" ");
+						if (x == half || x == half + 1)
+							printf("*");
+						else
+							printf(" ");
 					} else {
-						if (x == half + 1) printf("*");
-						else printf(" ");
+						if (x == half + 1)
+							printf("*");
+						else
+							printf(" ");
 					}
-				} else printf("*");
+				} else
+					printf("*");
 			}
 		}
 

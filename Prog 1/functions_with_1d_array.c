@@ -1,12 +1,14 @@
 #include <stdio.h>
 
-#define MIN(a,b) (((a) < (b)) ? (a) : (b))
-#define MAX(a,b) (((a) > (b)) ? (a) : (b))
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
 int binaryConverter(int num) {
 	int binary = 0;
 
-	for (int placement = 1; num > 0; binary += placement * (num % 2), placement *= 10, num /= 2);
+	for (int placement = 1; num > 0;
+		 binary += placement * (num % 2), placement *= 10, num /= 2)
+		;
 
 	return binary;
 }

@@ -1,8 +1,6 @@
 #include "utils.h"
 
 #include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 Expression *parse(String input) {
 	Expression *head = expressionNew();
@@ -26,14 +24,14 @@ Expression *parse(String input) {
 			}
 
 			switch (*ch) {
-				case '(':
-					expression->group = ++group;
-					expression->groupIndecies++;
-					break;
-				case ')':
-					expression->group = -group;
-					expression->groupIndecies--;
-					break;
+			case '(':
+				expression->group = ++group;
+				expression->groupIndecies++;
+				break;
+			case ')':
+				expression->group = -group;
+				expression->groupIndecies--;
+				break;
 			}
 		}
 	}
@@ -43,17 +41,17 @@ Expression *parse(String input) {
 
 int getOperatorFromChar(char ch) {
 	switch (ch) {
-		case '+':
-			return 1;
-		case '-':
-			return 2;
-		case '*':
-			return 3;
-		case '/':
-			return 4;
-		case '^':
-			return 5;
-		default:
-			return 0;
+	case '+':
+		return 1;
+	case '-':
+		return 2;
+	case '*':
+		return 3;
+	case '/':
+		return 4;
+	case '^':
+		return 5;
+	default:
+		return 0;
 	}
 }

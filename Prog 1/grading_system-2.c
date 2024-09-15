@@ -9,7 +9,8 @@ int main(void) {
 	printf("Input number of Exams: ");
 	scanf("%d", &exams);
 
-	if (subjects == 0) goto exit;
+	if (subjects == 0)
+		goto exit;
 
 	int len = subjects * exams;
 	int sum = 0;
@@ -42,16 +43,18 @@ int main(void) {
 		}
 	}
 
-	float avg = (float) sum / (float) (len * 100) * 100.0;
+	float avg = (float)sum / (float)(len * 100) * 100.0;
 
 	printf("\n\nAverage Grade for %d Exams : %.f\n\n", len, avg);
 
-	if (exams != 1) printf("Best Subject: Subject %d\n", bestIndex);
-	else printf("No Best Subject\n");
+	if (exams != 1)
+		printf("Best Subject: Subject %d\n", bestIndex);
+	else
+		printf("No Best Subject\n");
 	printf("Worst Subject: Subject %d\n\n", worstIndex);
 
 	printf("%s this Semester", avg >= 75 ? "Passed" : "Failed");
 
-	exit:
+exit:
 	return 0;
 }

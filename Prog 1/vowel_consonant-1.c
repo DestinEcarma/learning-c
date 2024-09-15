@@ -25,7 +25,8 @@ int main() {
 			printf("The character is a consonant.");
 			break;
 		}
-	} else printf("Invalid input.");
+	} else
+		printf("Invalid input.");
 
 	return 0;
 }

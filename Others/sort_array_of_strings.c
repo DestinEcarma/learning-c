@@ -3,12 +3,16 @@
 #include <string.h>
 
 int lexicographic_sort(const char *a, const char *b) {
-	if (a == NULL || *a == '\0') return 0;
-	if (b == NULL || *b == '\0') return 1;
+	if (a == NULL || *a == '\0')
+		return 0;
+	if (b == NULL || *b == '\0')
+		return 1;
 
 	while (*a == *b) {
-		if (*(++a) == '\0') return 0;
-		if (*(++b) == '\0') return 1;
+		if (*(++a) == '\0')
+			return 0;
+		if (*(++b) == '\0')
+			return 1;
 	}
 
 	return *a > *b;
@@ -48,7 +52,8 @@ int sort_by_number_of_distinct_characters(const char *a, const char *b) {
 	int count_a = strlen_distinct(a);
 	int count_b = strlen_distinct(b);
 
-	if (count_a == count_b) return lexicographic_sort(a, b);
+	if (count_a == count_b)
+		return lexicographic_sort(a, b);
 	return count_a > count_b;
 }
 
@@ -56,11 +61,13 @@ int sort_by_length(const char *a, const char *b) {
 	int length_a = strlen(a);
 	int length_b = strlen(b);
 
-	if (length_a == length_b) return lexicographic_sort(a, b);
+	if (length_a == length_b)
+		return lexicographic_sort(a, b);
 	return length_a > length_b;
 }
 
-void string_sort(char **arr, const int len, int (*cmp_func)(const char *a, const char *b)) {
+void string_sort(char **arr, const int len,
+				 int (*cmp_func)(const char *a, const char *b)) {
 	int sorting = 1;
 
 	for (int x = 0; x < len && sorting; x++) {

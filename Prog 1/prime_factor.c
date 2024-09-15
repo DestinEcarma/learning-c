@@ -9,11 +9,13 @@ int main(void) {
 	int maxPrime = 0;
 
 	while (num > 0) {
-		if (num % currentDiv != 0) currentDiv++;
+		if (num % currentDiv != 0)
+			currentDiv++;
 		else {
 			maxPrime = num;
 			num /= currentDiv;
-			if (num == 1) break;
+			if (num == 1)
+				break;
 		}
 	}
 

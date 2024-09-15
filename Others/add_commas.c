@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* addCommas(int number) {
+char *addCommas(int number) {
 	char buffer[20];
 	sprintf(buffer, "%d", number);
 
@@ -10,7 +10,7 @@ char* addCommas(int number) {
 	int commaCount = (length - 1) / 3;
 	int newLength = length + commaCount;
 
-	char* result = malloc(newLength + 1);
+	char *result = malloc(newLength + 1);
 	int j = newLength - 1;
 
 	for (int i = length - 1; i >= 0; i--) {
@@ -26,9 +26,9 @@ char* addCommas(int number) {
 }
 
 int main(void) {
-	char* salary;
+	char *salary;
 
-	salary  = "1,234,567";
+	salary = "1,234,567";
 
 	printf("%s", salary);
 

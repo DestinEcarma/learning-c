@@ -4,15 +4,12 @@
 #include <string.h>
 
 const char *SWEAR_WORDS[5] = {
-	"fk",
-	"sk",
-	"ct",
-	"st",
-	"dk",
+	"fk", "sk", "ct", "st", "dk",
 };
 
 int filterWord(char *dest, const char *word) {
-	if (strlen(word) != 4) return 0;
+	if (strlen(word) != 4)
+		return 0;
 
 	for (int i = 0; i < 5; i++) {
 		const char *swearWord = SWEAR_WORDS[i];
@@ -20,8 +17,10 @@ int filterWord(char *dest, const char *word) {
 		char firstChar = word[0];
 		char lastChar = word[3];
 
-		if (tolower(firstChar) != swearWord[0]) continue;
-		if (tolower(lastChar) != swearWord[1]) continue;
+		if (tolower(firstChar) != swearWord[0])
+			continue;
+		if (tolower(lastChar) != swearWord[1])
+			continue;
 
 		dest[0] = firstChar;
 		dest[1] = '*';
@@ -60,7 +59,7 @@ int main(void) {
 	char str[100];
 
 	printf("Enter a phrase: ");
-	gets(str);
+	fgets(str, 100, stdin);
 
 	char *filteredStr = filterPhrase(str);
 

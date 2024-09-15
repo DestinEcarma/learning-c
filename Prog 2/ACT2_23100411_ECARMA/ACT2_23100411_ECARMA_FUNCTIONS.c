@@ -1,43 +1,29 @@
 #include "ACT2_23100411_ECARMA_FUNCTIONS.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
 // ctype Library
-bool my_isalnum(int c) {
-	return my_isalpha(c) || my_isdigit(c);
-}
-
 bool my_isalpha(int c) {
-	return (c >= 'A' && c <= 'Z') ||
-		   (c >= 'a' && c <= 'z');
+	return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
 }
 
-bool my_isdigit(int c) {
-	return c >= '0' && c <= '9';
-}
-
-bool my_islower(int c) {
-	return c >= 'a' && c <= 'z';
-}
-
-bool my_isspace(int c) {
-	return c == ' ' || (c >= '\t' && c <= '\r');
-}
-
-bool my_isupper(int c) {
-	return c >= 'A' && c <= 'Z';
-}
+bool my_isalnum(int c) { return my_isalpha(c) || my_isdigit(c); }
+bool my_isdigit(int c) { return c >= '0' && c <= '9'; }
+bool my_islower(int c) { return c >= 'a' && c <= 'z'; }
+bool my_isspace(int c) { return c == ' ' || (c >= '\t' && c <= '\r'); }
+bool my_isupper(int c) { return c >= 'A' && c <= 'Z'; }
 
 int my_tolower(int c) {
-	if (!my_isalpha(c)) return c;
-	if (my_islower(c)) return c;
+	if (!my_isalpha(c))
+		return c;
+	if (my_islower(c))
+		return c;
 	return c + 32;
 }
 
 int my_toupper(int c) {
-	if (!my_isalpha(c)) return c;
-	if (my_isupper(c)) return c;
+	if (!my_isalpha(c))
+		return c;
+	if (my_isupper(c))
+		return c;
 	return c - 32;
 }
 
@@ -82,8 +68,7 @@ int my_strcmp(const char *str1, const char *str2) {
 		str1++;
 		str2++;
 	}
-	return (*str1 < *str2) ? -1 : (*str1 > *str2) ? 1
-												  : 0;
+	return (*str1 < *str2) ? -1 : (*str1 > *str2) ? 1 : 0;
 }
 
 // Counter
@@ -91,7 +76,8 @@ int my_counterDigits(const char *str) {
 	int digit = 0;
 
 	while (*str != '\0') {
-		if (my_isdigit(*str)) digit++;
+		if (my_isdigit(*str))
+			digit++;
 		str++;
 	}
 

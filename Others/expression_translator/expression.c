@@ -1,6 +1,5 @@
 #include "expression.h"
 
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,7 +7,7 @@ Expression *expressionNew() {
 	Expression *expression = malloc(sizeof(Expression));
 
 	expression->operand = 0;
-	expression->operator = 0;
+	expression->operator= 0;
 	expression->group = 0;
 	expression->groupIndecies = 0;
 	expression->right = NULL;
@@ -44,33 +43,33 @@ void expressionDisplay(Expression *expression) {
 
 char expressionGetOperator(Expression *expression) {
 	switch (expression->operator) {
-		case 1:
-			return '+';
-		case 2:
-			return '-';
-		case 3:
-			return '*';
-		case 4:
-			return '/';
-		case 5:
-			return '^';
-		default:
-			return '\0';
+	case 1:
+		return '+';
+	case 2:
+		return '-';
+	case 3:
+		return '*';
+	case 4:
+		return '/';
+	case 5:
+		return '^';
+	default:
+		return '\0';
 	}
 }
 
 int expressionGetPrecedence(Expression *expression) {
 	switch (expression->operator) {
-		case 1:	 // +
-		case 2:	 // -
-			return 1;
-		case 3:	 // *
-		case 4:	 // /
-			return 2;
-		case 5:	 // ^
-			return 3;
-		default:
-			return 0;
+	case 1: // +
+	case 2: // -
+		return 1;
+	case 3: // *
+	case 4: // /
+		return 2;
+	case 5: // ^
+		return 3;
+	default:
+		return 0;
 	}
 }
 

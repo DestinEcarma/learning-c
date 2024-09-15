@@ -16,10 +16,11 @@ int main(void) {
 			binary += placement;
 			temp |= 1 << i;
 		}
-		
+
 		placement *= 10;
 		len++;
-		if (temp == num) break;
+		if (temp == num)
+			break;
 	}
 
 	printf("The value of your soul is %d.\n", binary);
@@ -37,10 +38,8 @@ int main(void) {
 		}
 	}
 
-	printf("%s", symmetric ?
-		"You are worthy my child." :
-		"Ahh, you are filty. Be gone."
-	);
+	printf("%s", symmetric ? "You are worthy my child."
+						   : "Ahh, you are filty. Be gone.");
 
 	return 0;
 }

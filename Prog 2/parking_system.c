@@ -37,11 +37,13 @@ void init_parking_area(ParkingArea *parking_area, int size) {
 	parking_area->max = size;
 }
 
-ParkingInfo create_parking_info(Vehicle vehicle, MyTime time_in, MyTime time_out) {
+ParkingInfo create_parking_info(Vehicle vehicle, MyTime time_in,
+								MyTime time_out) {
 	return (ParkingInfo){vehicle, time_in, time_out};
 }
 
-Vehicle create_vehicle(char type, String plate_num, String color, String model) {
+Vehicle create_vehicle(char type, String plate_num, String color,
+					   String model) {
 	Vehicle vehicle = {type};
 
 	strcpy(vehicle.plate_num, plate_num);
@@ -51,9 +53,7 @@ Vehicle create_vehicle(char type, String plate_num, String color, String model) 
 	return vehicle;
 }
 
-MyTime create_my_time(int hour, int minute) {
-	return (MyTime){hour, minute};
-}
+MyTime create_my_time(int hour, int minute) { return (MyTime){hour, minute}; }
 
 void display_parking_area(ParkingArea *parking_area) {
 	int available_slot = MAX(parking_area->max - parking_area->count, 0);
@@ -66,19 +66,24 @@ void display_parking_area(ParkingArea *parking_area) {
 		printf("%d\t", i + 1);
 
 		if (temp->type) {
-			printf(" | %s - %s - %s\n", temp->model, temp->color, temp->plate_num);
+			printf(" | %s - %s - %s\n", temp->model, temp->color,
+				   temp->plate_num);
 		} else {
 			printf(" | available\n");
 		}
 	}
 }
 
-bool add_park_in(ParkingArea *parking_area, Vehicle vehicle, MyTime time_in, int slot_num) {
-	if (parking_area->count >= parking_area->max) return false;
-	if (slot_num < 0 || slot_num > parking_area->max) return false;
+bool add_park_in(ParkingArea *parking_area, Vehicle vehicle, MyTime time_in,
+				 int slot_num) {
+	if (parking_area->count >= parking_area->max)
+		return false;
+	if (slot_num < 0 || slot_num > parking_area->max)
+		return false;
 
 	ParkingInfo *temp = parking_area->slot + slot_num;
-	if (temp->vehicle.type) return false;
+	if (temp->vehicle.type)
+		return false;
 
 	temp->vehicle = vehicle;
 	temp->time_in = time_in;
@@ -89,18 +94,22 @@ bool add_park_in(ParkingArea *parking_area, Vehicle vehicle, MyTime time_in, int
 	return true;
 }
 
-bool add_park_out(ParkingArea *parking_area, MyTime time_out, String plate_num) {
+bool add_park_out(ParkingArea *parking_area, MyTime time_out,
+				  String plate_num) {
 	for (int i = 0; i < parking_area->max; i++) {
 		ParkingInfo *temp_parking_info = parking_area->slot + i;
 		MyTime *temp_time_in = &temp_parking_info->time_in;
 		MyTime *temp_time_out = &temp_parking_info->time_out;
 
-		if (!(temp_time_in->hour + temp_time_in->minute)) continue;
-		if (temp_time_out->hour + temp_time_out->minute) continue;
+		if (!(temp_time_in->hour + temp_time_in->minute))
+			continue;
+		if (temp_time_out->hour + temp_time_out->minute)
+			continue;
 
 		Vehicle *temp_vehicle = &temp_parking_info->vehicle;
 
-		if (strcmp(temp_vehicle->plate_num, plate_num)) continue;
+		if (strcmp(temp_vehicle->plate_num, plate_num))
+			continue;
 
 		*temp_time_out = time_out;
 
@@ -110,17 +119,20 @@ bool add_park_out(ParkingArea *parking_area, MyTime time_out, String plate_num) 
 	return false;
 }
 
-bool check_out_vehicle(ParkingArea *parking_area, ParkingHistory *parking_history, String plate_num) {
+bool check_out_vehicle(ParkingArea *parking_area,
+					   ParkingHistory *parking_history, String plate_num) {
 	for (int i = 0; i < parking_area->max; i++) {
 		ParkingInfo *temp_parking_info = parking_area->slot + i;
 		MyTime *temp_time_in = &temp_parking_info->time_in;
 		MyTime *temp_time_out = &temp_parking_info->time_out;
 
-		if (!(temp_time_in->hour + temp_time_in->minute)) continue;
+		if (!(temp_time_in->hour + temp_time_in->minute))
+			continue;
 
 		Vehicle *temp_vehicle = &temp_parking_info->vehicle;
 
-		if (strcmp(temp_vehicle->plate_num, plate_num)) continue;
+		if (strcmp(temp_vehicle->plate_num, plate_num))
+			continue;
 
 		parking_history->slot[i] = *temp_parking_info;
 
@@ -151,7 +163,8 @@ void print_parking_receipt(ParkingInfo *parking_info) {
 	MyTime *temp_time_out = &parking_info->time_out;
 	Vehicle *temp_vehicle = &parking_info->vehicle;
 
-	MyTime difference = {temp_time_out->hour - temp_time_in->hour, temp_time_out->minute - temp_time_in->minute};
+	MyTime difference = {temp_time_out->hour - temp_time_in->hour,
+						 temp_time_out->minute - temp_time_in->minute};
 
 	float diff_total_hours = difference.hour + ((float)difference.minute / 60);
 
@@ -162,26 +175,29 @@ void print_parking_receipt(ParkingInfo *parking_info) {
 	float additional_charge;
 
 	switch (temp_vehicle->type) {
-		case 'A':
-			initial_charge = 30 * first_3_hours;
-			break;
-		case 'B':
-			initial_charge = 40 * first_3_hours;
-			break;
-		case 'C':
-			initial_charge = 100 * first_3_hours;
-			break;
+	case 'A':
+		initial_charge = 30 * first_3_hours;
+		break;
+	case 'B':
+		initial_charge = 40 * first_3_hours;
+		break;
+	case 'C':
+		initial_charge = 100 * first_3_hours;
+		break;
 	}
 
 	additional_charge = after_3_hours * 10;
 
 	printf("TYPE: %c\n", temp_vehicle->type);
-	printf("VEHICLE: %s - %s - %s\n", temp_vehicle->plate_num, temp_vehicle->color, temp_vehicle->model);
+	printf("VEHICLE: %s - %s - %s\n", temp_vehicle->plate_num,
+		   temp_vehicle->color, temp_vehicle->model);
 	printf("TIME IN: %02d:%02d\n", temp_time_in->hour, temp_time_in->minute);
 	printf("TIME OUT: %02d:%02d\n", temp_time_out->hour, temp_time_out->minute);
-	printf("TOTAL TIME: %02d:%02d\n", temp_time_out->hour - temp_time_in->hour);
+	printf("TOTAL TIME: %02d:%02d\n", temp_time_out->hour - temp_time_in->hour,
+		   temp_time_out->minute - temp_time_in->minute);
 	printf("Initial Charge (first 3 hours): Php %02.2f\n", initial_charge);
-	printf("Additional Charge (after 3 hours): Php %02.2f\n", additional_charge);
+	printf("Additional Charge (after 3 hours): Php %02.2f\n",
+		   additional_charge);
 	printf("Total Charge: Php %02.2f\n", initial_charge + additional_charge);
 }
 
@@ -211,7 +227,8 @@ int main(void) {
 
 	for (int i = 0; i < parking_history.max; i++) {
 		ParkingInfo *temp = parking_history.slot + i;
-		if (!temp->vehicle.type) continue;
+		if (!temp->vehicle.type)
+			continue;
 
 		print_parking_receipt(temp);
 	}

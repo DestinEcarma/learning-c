@@ -1,18 +1,18 @@
-#include<stdio.h>
+#include <stdio.h>
 #define MAX 100
 
-int* sortElements(int arr[], int size);
+int *sortElements(int arr[], int size);
 void determineGaps(int arr[], int size);
 
 int main(void) {
 	// Start typing your C code here...
-	// Use the given code lines and functions 
+	// Use the given code lines and functions
 	int num;
 	int i = 0;
-	
+
 	printf("Enter a number: ");
 	scanf("%d", &num);
-	
+
 	printf("Foundation Codes:\n");
 
 	int found[MAX];
@@ -29,22 +29,22 @@ int main(void) {
 	}
 
 	int *ptr1;
-	
+
 	// Show the sorted array elements
 	ptr1 = sortElements(found, count);
 	printf("\nSorted Codes:\n");
-	
-	for(i = 0; i < count; i++) {
+
+	for (i = 0; i < count; i++) {
 		printf("%d\t", found[i]);
 	}
-	
+
 	// Determine the gaps
 	determineGaps(ptr1, count);
-	
+
 	return 0;
 }
 
-int* sortElements(int arr[], int size) {
+int *sortElements(int arr[], int size) {
 	// Write your codes here for sorting the elements
 
 	for (int i = 0; i < size; i++) {
@@ -58,7 +58,7 @@ int* sortElements(int arr[], int size) {
 			}
 		}
 	}
-	
+
 	return arr;
 }
 
@@ -71,18 +71,19 @@ void determineGaps(int arr[], int size) {
 
 	for (int gap = 0, j = 0; gap <= 9; gap++) {
 		for (i = 0; i < size; i++) {
-			if (gap == arr[i]) goto skip;
+			if (gap == arr[i])
+				goto skip;
 		}
 
 		gaps[j++] = gap;
 		count++;
 
-		skip:
+	skip:
 		continue;
 	}
-	
+
 	printf("\nGaps:\n");
-	for(i=0; i < count; i++) {
+	for (i = 0; i < count; i++) {
 		printf("%d\t", gaps[i]);
 	}
 }

@@ -20,7 +20,8 @@ Info *sortByProgramAsc(Info var[MAX]) {
 		Info temp = arr[i];
 		int j = i - 1;
 
-		while (j >= 0 && strcmp(arr[j].program, temp.program) > 0) j--;
+		while (j >= 0 && strcmp(arr[j].program, temp.program) > 0)
+			j--;
 
 		memmove(arr + j + 2, arr + j + 1, (i - j - 1) * sizeof(Info));
 		arr[j + 1] = temp;
@@ -38,7 +39,8 @@ Info *sortByLastNameAsc(Info var[MAX]) {
 		Info temp = arr[i];
 		int j = i - 1;
 
-		while (j >= 0 && strcmp(arr[j].lname, temp.lname) > 0) j--;
+		while (j >= 0 && strcmp(arr[j].lname, temp.lname) > 0)
+			j--;
 
 		memmove(arr + j + 2, arr + j + 1, (i - j - 1) * sizeof(Info));
 		arr[j + 1] = temp;
@@ -48,7 +50,8 @@ Info *sortByLastNameAsc(Info var[MAX]) {
 }
 
 void printInfo(Info *var) {
-	printf("%s\t%s\t\t%s\t%d\n", var->fname, var->lname, var->program, var->age);
+	printf("%s\t%s\t\t%s\t%d\n", var->fname, var->lname, var->program,
+		   var->age);
 }
 
 void printInfoList(Info var[MAX]) {

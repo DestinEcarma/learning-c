@@ -11,6 +11,6 @@ int main() {
 	v5 = num % 10;
 
 	printf("%d %d %d %d %d", v1, v2, v3, v4, v5);
-	
+
 	return 0;
 }

@@ -15,6 +15,6 @@ int main() {
 	}
 
 	printf("%lf", fare);
-	
+
 	return 0;
 }

@@ -7,7 +7,8 @@ int main(void) {
 	scanf("%d", &num);
 
 	for (int i = 1; i <= num; i++) {
-		if (num % i) continue;
+		if (num % i)
+			continue;
 
 		int isComposite = 0;
 

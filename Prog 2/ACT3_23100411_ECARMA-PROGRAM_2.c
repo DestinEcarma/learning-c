@@ -51,7 +51,7 @@ int main(void) {
 	char str[100];
 
 	printf("Enter a phrase: ");
-	gets(str);
+	fgets(str, 100, stdin);
 
 	char *word = getLongestWord(str);
 
