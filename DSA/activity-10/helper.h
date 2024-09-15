@@ -15,14 +15,14 @@ typedef struct {
 	List avail;
 } Cursor;
 
-void printList(Cursor*, List);
+void printList(Cursor *, List);
 
-void initList(Cursor*);
-int allocSpace(Cursor*);
-void dealloc(Cursor*, int);
-void insertFirst(Cursor*, List*, int);
-void insertLast(Cursor*, List*, int);
-void insertSorted(Cursor*, List*, int);
-void deleteData(Cursor*, List*, int);
+void initList(Cursor *);
+int allocSpace(Cursor *);
+void dealloc(Cursor *, int);
+void insertFirst(Cursor *, List *, int);
+void insertLast(Cursor *, List *, int);
+void insertSorted(Cursor *, List *, int);
+void deleteData(Cursor *, List *, int);
 
 #endif

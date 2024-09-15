@@ -3,12 +3,12 @@
 
 typedef struct node {
 	int data;
-	struct node* next;
+	struct node *next;
 } Node, *List;
 
 void printList(List);
 
-Node* createNode(int);
+Node *createNode(int);
 
 int getMiddleElement(List);
 

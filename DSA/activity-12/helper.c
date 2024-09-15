@@ -4,7 +4,7 @@
 
 #include "helper.h"
 
-void printSet(Set* set) {
+void printSet(Set *set) {
 	for (int i = 0; i < MAX; i++) {
 		if ((*set)[i] > 0) {
 			printf("%d ", i);
@@ -14,7 +14,7 @@ void printSet(Set* set) {
 	printf("\n");
 }
 
-void zeroSet(Set* set) {
+void zeroSet(Set *set) {
 	memset(*set, 0, sizeof(short) * MAX);
 
 	/*for (int i = 0; i < MAX; i++) {*/
@@ -22,16 +22,12 @@ void zeroSet(Set* set) {
 	/*}*/
 }
 
-void insertSet(Set* set, int data) {
-	(*set)[data] = 1;
-}
+void insertSet(Set *set, int data) { (*set)[data] = 1; }
 
-void removeSet(Set* set, int data) {
-	(*set)[data] = 0;
-}
+void removeSet(Set *set, int data) { (*set)[data] = 0; }
 
-Set* unionSet(Set* A, Set* B) {
-	Set* result = (Set*)malloc(sizeof(Set));
+Set *unionSet(Set *A, Set *B) {
+	Set *result = (Set *)malloc(sizeof(Set));
 
 	for (int i = 0; i < MAX; i++) {
 		(*result)[i] = (*A)[i] || (*B)[i];
@@ -40,8 +36,8 @@ Set* unionSet(Set* A, Set* B) {
 	return result;
 }
 
-Set* intersectionSet(Set* A, Set* B) {
-	Set* result = (Set*) malloc(sizeof(Set));
+Set *intersectionSet(Set *A, Set *B) {
+	Set *result = (Set *)malloc(sizeof(Set));
 
 	for (int i = 0; i < MAX; i++) {
 		(*result)[i] = (*A)[i] && (*B)[i];
@@ -50,8 +46,8 @@ Set* intersectionSet(Set* A, Set* B) {
 	return result;
 }
 
-Set* differenceSet(Set* A, Set* B) {
-	Set* result = (Set*) malloc(sizeof(Set));
+Set *differenceSet(Set *A, Set *B) {
+	Set *result = (Set *)malloc(sizeof(Set));
 
 	for (int i = 0; i < MAX; i++) {
 		(*result)[i] = (*A)[i] && !(*B)[i];
@@ -60,8 +56,8 @@ Set* differenceSet(Set* A, Set* B) {
 	return result;
 }
 
-Set* complementSet(Set* A) {
-	Set* result = (Set*) malloc(sizeof(Set));
+Set *complementSet(Set *A) {
+	Set *result = (Set *)malloc(sizeof(Set));
 
 	for (int i = 0; i < MAX; i++) {
 		(*result)[i] = !(*A)[i];
@@ -70,14 +66,11 @@ Set* complementSet(Set* A) {
 	return result;
 }
 
-bool isEqualSet(Set* A, Set* B) {
+bool isEqualSet(Set *A, Set *B) {
 	int i = 0;
 	int j = 0;
 
-	while (
-		i < MAX && j < MAX &&
-		(*A)[i] == (*B)[j]
-	) {
+	while (i < MAX && j < MAX && (*A)[i] == (*B)[j]) {
 		i++;
 		j++;
 	}

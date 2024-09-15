@@ -12,11 +12,11 @@ typedef struct {
 
 void printStack(Stack);
 
-void initialize(Stack*);
-void push(Stack*, int);
-void pop(Stack*);
-int top(Stack*);
-bool isEmpty(Stack*);
-bool isFull(Stack*);
+void initialize(Stack *);
+void push(Stack *, int);
+void pop(Stack *);
+int top(Stack *);
+bool isEmpty(Stack *);
+bool isFull(Stack *);
 
 #endif

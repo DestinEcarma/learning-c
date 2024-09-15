@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "helper.h"
 
@@ -12,25 +12,25 @@ void printQueue(Queue queue) {
 	printf("\n");
 }
 
-void initQueue(Queue* queue) {
+void initQueue(Queue *queue) {
 	queue->front = 1;
 	queue->rear = 0;
 }
 
-void enqueue(Queue* queue, int data) {
+void enqueue(Queue *queue, int data) {
 	if (isFull(queue) == false) {
 		queue->rear = (queue->rear + 1) % MAX;
-		queue->elems[queue->rear] = data;	
+		queue->elems[queue->rear] = data;
 	}
 }
 
-void dequeue(Queue* queue) {
+void dequeue(Queue *queue) {
 	if (isEmpty(queue) == false) {
 		queue->front = (queue->front + 1) % MAX;
 	}
 }
 
-int peek(Queue* queue) {
+int peek(Queue *queue) {
 	if (isEmpty(queue) == false) {
 		return queue->elems[queue->front];
 	}
@@ -38,10 +38,6 @@ int peek(Queue* queue) {
 	return -1;
 }
 
-bool isEmpty(Queue* queue) {
-	return queue->front == (queue->rear + 1) % MAX;
-}
+bool isEmpty(Queue *queue) { return queue->front == (queue->rear + 1) % MAX; }
 
-bool isFull(Queue* queue) {
-	return queue->front == (queue->rear + 2) % MAX;
-}
+bool isFull(Queue *queue) { return queue->front == (queue->rear + 2) % MAX; }

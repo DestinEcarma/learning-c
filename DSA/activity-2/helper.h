@@ -8,13 +8,13 @@ typedef struct node {
 
 void printList(List);
 
-void initListNoHeader(List*);
-void initListWithHeader(List*);
+void initListNoHeader(List *);
+void initListWithHeader(List *);
 
-void insertLastPPN(List*, int);
+void insertLastPPN(List *, int);
 void insertLastLookAhead(List, int);
 
-void deleteElemPPN(List*, int);
+void deleteElemPPN(List *, int);
 void deleteElemLookAhead(List, int);
 
 #endif

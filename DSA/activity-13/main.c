@@ -25,7 +25,8 @@ int main() {
 	printf("Set B: ");
 	printSet(sortedSetB);
 
-	printf("Is equal (sorted): %s\n", isEqualSetSortedTest(sortedSetA, sortedSetB) ? "true" : "false");
+	printf("Is equal (sorted): %s\n",
+		   isEqualSetSortedTest(sortedSetA, sortedSetB) ? "true" : "false");
 
 	makeNull(&sortedSetA);
 
@@ -51,7 +52,9 @@ int main() {
 	printf("Set B: ");
 	printSet(unsortedSetB);
 
-	printf("Is equal (unsorted): %s\n", isEqualSetUnsortedTest(unsortedSetA, unsortedSetB) ? "true" : "false");
+	printf("Is equal (unsorted): %s\n",
+		   isEqualSetUnsortedTest(unsortedSetA, unsortedSetB) ? "true"
+															  : "false");
 
 	makeNull(&unsortedSetA);
 

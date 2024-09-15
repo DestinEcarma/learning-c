@@ -3,9 +3,9 @@
 #include "helper.h"
 
 int main() {
-	StaticList* version2;
+	StaticList *version2;
 	DynamicList version3;
-	DynamicList* version4;
+	DynamicList *version4;
 
 	printf("Initialization...\n\n");
 

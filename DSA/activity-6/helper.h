@@ -23,15 +23,15 @@ typedef struct {
 	int size;
 } Students;
 
-void initialize(Students*, int);
+void initialize(Students *, int);
 
-void insertAtPos(Student, Position, Students*);
-void deleteAtPos(Position, Students*);
+void insertAtPos(Student, Position, Students *);
+void deleteAtPos(Position, Students *);
 
-Position locate(Student, Students*);
-Student retrieve(Position, Students*);
+Position locate(Student, Students *);
+Student retrieve(Position, Students *);
 
-void makeNull(Students*);
-void printList(Students*);
+void makeNull(Students *);
+void printList(Students *);
 
 #endif

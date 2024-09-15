@@ -2,7 +2,7 @@
 
 #include "helper.h"
 
-void printList(Cursor* cursor, List head) {
+void printList(Cursor *cursor, List head) {
 	while (head != -1) {
 		printf("%d", cursor->nodes[head].data);
 		head = cursor->nodes[head].link;
@@ -15,7 +15,7 @@ void printList(Cursor* cursor, List head) {
 	printf("\n");
 }
 
-void initList(Cursor* cursor) {
+void initList(Cursor *cursor) {
 	cursor->avail = MAX - 1;
 
 	for (int i = 0; i < MAX; i++) {
@@ -23,7 +23,7 @@ void initList(Cursor* cursor) {
 	}
 }
 
-int allocSpace(Cursor* cursor) {
+int allocSpace(Cursor *cursor) {
 	int result = cursor->avail;
 
 	if (result != -1) {
@@ -33,18 +33,18 @@ int allocSpace(Cursor* cursor) {
 	return result;
 }
 
-void deallocSpace(Cursor* cursor, int i) {
+void deallocSpace(Cursor *cursor, int i) {
 	if (i >= 0 && i < MAX) {
 		cursor->nodes[i].link = cursor->avail;
 		cursor->avail = i;
 	}
 }
 
-void insertFirst(Cursor* cursor, List* head, int data) {
+void insertFirst(Cursor *cursor, List *head, int data) {
 	int i = allocSpace(cursor);
 
 	if (i != -1) {
-		Node* node = cursor->nodes + i;
+		Node *node = cursor->nodes + i;
 
 		node->data = data;
 		node->link = *head;
@@ -53,11 +53,11 @@ void insertFirst(Cursor* cursor, List* head, int data) {
 	}
 }
 
-void insertLast(Cursor* cursor, List* head, int data) {
+void insertLast(Cursor *cursor, List *head, int data) {
 	int i = allocSpace(cursor);
 
 	if (i != -1) {
-		Node* node = cursor->nodes + i;
+		Node *node = cursor->nodes + i;
 
 		while (*head != -1) {
 			head = &cursor->nodes[*head].link;
@@ -69,11 +69,11 @@ void insertLast(Cursor* cursor, List* head, int data) {
 	}
 }
 
-void insertSorted(Cursor* cursor, List* head, int data) {
+void insertSorted(Cursor *cursor, List *head, int data) {
 	int i = allocSpace(cursor);
 
 	if (i != -1) {
-		Node* node = cursor->nodes + i;
+		Node *node = cursor->nodes + i;
 
 		while (*head != -1 && cursor->nodes[*head].data < data) {
 			head = &cursor->nodes[*head].link;
@@ -85,9 +85,9 @@ void insertSorted(Cursor* cursor, List* head, int data) {
 	}
 }
 
-void deleteData(Cursor* cursor, List* head, int data) {
+void deleteData(Cursor *cursor, List *head, int data) {
 	if (*head != -1) {
-		Node* curr = cursor->nodes + *head;
+		Node *curr = cursor->nodes + *head;
 
 		while (curr->link != -1 && curr->data != data) {
 			head = &curr->link;

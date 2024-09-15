@@ -7,9 +7,9 @@
 int main() {
 	List head = createNode(0);
 	List tail = head;
-	
+
 	for (int i = 1; i < SIZE; i++) {
-		Node* temp = createNode(i);
+		Node *temp = createNode(i);
 
 		tail->next = temp;
 		tail = temp;

@@ -10,12 +10,12 @@
 #define MAX_INT_UNORDERED_TEST 8
 
 typedef struct node {
-  int data;
-  struct node *next;
+	int data;
+	struct node *next;
 } Node, *Set;
 
 void displaySet(Set);
-void insertFirst(Set*, int);
+void insertFirst(Set *, int);
 
 Set unionSetOrderedTest(Set, Set);
 Set unionSetUnorderedTest(Set A, Set B);

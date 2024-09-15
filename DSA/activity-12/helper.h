@@ -7,16 +7,16 @@
 
 typedef char Set[MAX];
 
-void printSet(Set*);
+void printSet(Set *);
 
-void zeroSet(Set*);
-void insertSet(Set*, int);
-void removeSet(Set*, int);
-Set* unionSet(Set*, Set*);
-Set* intersectionSet(Set*, Set*);
-Set* differenceSet(Set*, Set*);
-Set* complementSet(Set*);
+void zeroSet(Set *);
+void insertSet(Set *, int);
+void removeSet(Set *, int);
+Set *unionSet(Set *, Set *);
+Set *intersectionSet(Set *, Set *);
+Set *differenceSet(Set *, Set *);
+Set *complementSet(Set *);
 
-bool isEqualSet(Set*, Set*);
+bool isEqualSet(Set *, Set *);
 
 #endif

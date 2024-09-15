@@ -3,18 +3,18 @@
 
 typedef struct node {
 	int data;
-	struct node* next;
+	struct node *next;
 } Node;
 
 typedef struct {
-	Node* front;
-	Node* rear;
+	Node *front;
+	Node *rear;
 } Queue;
 
-void printQueue(Queue*);
+void printQueue(Queue *);
 
-void initQueue(Queue*);
-void enqueue(Queue*, int);
-void dequeue(Queue*);
+void initQueue(Queue *);
+void enqueue(Queue *, int);
+void dequeue(Queue *);
 
 #endif

@@ -4,9 +4,9 @@
 
 int main() {
 	// Populate the list and define the element
-	Node a = { .data =  3, .next =  NULL };
-	Node b = { .data =  7, .next =  &a };
-	Node c = { .data =  1, .next =  &b };
+	Node a = {.data = 3, .next = NULL};
+	Node b = {.data = 7, .next = &a};
+	Node c = {.data = 1, .next = &b};
 
 	List L = &c;
 	int elem = 2;

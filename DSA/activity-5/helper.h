@@ -9,13 +9,13 @@ typedef struct {
 } StaticList;
 
 typedef struct {
-	int* elems;
+	int *elems;
 	int count;
 	int size;
 } DynamicList;
 
-void initializeVersion2(StaticList**);
-void initializeVersion3(DynamicList*, int);
-void initializeVersion4(DynamicList**, int);
+void initializeVersion2(StaticList **);
+void initializeVersion3(DynamicList *, int);
+void initializeVersion4(DynamicList **, int);
 
 #endif

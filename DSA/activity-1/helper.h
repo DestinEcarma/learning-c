@@ -9,6 +9,6 @@ typedef struct node {
 void printList(List);
 
 // Function Header
-void insertLast(List*, int);
+void insertLast(List *, int);
 
 #endif

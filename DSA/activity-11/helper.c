@@ -2,7 +2,7 @@
 
 #include "helper.h"
 
-void printList(Cursor* cursor, List head) {
+void printList(Cursor *cursor, List head) {
 	while (head != -1) {
 		printf("%d", cursor->nodes[head].data);
 		head = cursor->nodes[head].link;
@@ -15,7 +15,7 @@ void printList(Cursor* cursor, List head) {
 	printf("\n");
 }
 
-void initList(Cursor* cursor) {
+void initList(Cursor *cursor) {
 	cursor->avail = MAX - 1;
 
 	for (int i = 0; i < MAX; i++) {
@@ -23,7 +23,7 @@ void initList(Cursor* cursor) {
 	}
 }
 
-int allocSpace(Cursor* cursor) {
+int allocSpace(Cursor *cursor) {
 	int result = cursor->avail;
 
 	if (result != -1) {
@@ -33,18 +33,18 @@ int allocSpace(Cursor* cursor) {
 	return result;
 }
 
-void deallocSpace(Cursor* cursor, int i) {
+void deallocSpace(Cursor *cursor, int i) {
 	if (i >= 0 && i < MAX) {
 		cursor->nodes[i].link = cursor->avail;
 		cursor->avail = i;
 	}
 }
 
-void insertFirst(Cursor* cursor, List* head, int data) {
+void insertFirst(Cursor *cursor, List *head, int data) {
 	int i = allocSpace(cursor);
 
 	if (i != -1) {
-		Node* node = cursor->nodes + i;
+		Node *node = cursor->nodes + i;
 
 		node->data = data;
 		node->link = *head;
@@ -53,7 +53,7 @@ void insertFirst(Cursor* cursor, List* head, int data) {
 	}
 }
 
-void deleteFirst(Cursor* cursor, List* head) {
+void deleteFirst(Cursor *cursor, List *head) {
 	if (*head != -1) {
 		int i = *head;
 		*head = cursor->nodes[*head].link;
@@ -61,11 +61,11 @@ void deleteFirst(Cursor* cursor, List* head) {
 	}
 }
 
-void insertSorted(Cursor* cursor, List* head, int data) {
+void insertSorted(Cursor *cursor, List *head, int data) {
 	int i = allocSpace(cursor);
 
 	if (i != -1) {
-		Node* node = cursor->nodes + i;
+		Node *node = cursor->nodes + i;
 
 		while (*head != -1 && cursor->nodes[*head].data < data) {
 			head = &cursor->nodes[*head].link;
@@ -77,11 +77,9 @@ void insertSorted(Cursor* cursor, List* head, int data) {
 	}
 }
 
-boolean isEqualListOrderedTest(Cursor* cursor, List A, List B) {
-	while (
-		A != -1 && B != -1 &&
-		cursor->nodes[A].data == cursor->nodes[B].data
-	) {
+boolean isEqualListOrderedTest(Cursor *cursor, List A, List B) {
+	while (A != -1 && B != -1 &&
+		   cursor->nodes[A].data == cursor->nodes[B].data) {
 
 		A = cursor->nodes[A].link;
 		B = cursor->nodes[B].link;
@@ -94,10 +92,8 @@ boolean isEqualListUnorderedTest(Cursor cursor, List A, List B) {
 	List *trav = &B;
 
 	while (A != -1 && *trav != -1) {
-		while (
-			*trav != -1 &&
-			cursor.nodes[A].data != cursor.nodes[*trav].data
-		) {
+		while (*trav != -1 &&
+			   cursor.nodes[A].data != cursor.nodes[*trav].data) {
 			trav = &cursor.nodes[*trav].link;
 		}
 

@@ -42,7 +42,9 @@ int main() {
 	printf("B sorted: ");
 	printList(&cursorSorted, BSorted);
 
-	printf("A == B: %s\n\n", isEqualListOrderedTest(&cursorSorted, ASorted, BSorted) ? "TRUE" : "FALSE");
+	printf("A == B: %s\n\n",
+		   isEqualListOrderedTest(&cursorSorted, ASorted, BSorted) ? "TRUE"
+																   : "FALSE");
 
 	printf("A unordered: ");
 	printList(&cursorUnordered, AUnordered);
@@ -50,7 +52,10 @@ int main() {
 	printf("B unordered: ");
 	printList(&cursorUnordered, BUnordered);
 
-	printf("A == B: %s\n", isEqualListUnorderedTest(cursorUnordered, AUnordered, BUnordered) ? "TRUE" : "FALSE");
+	printf("A == B: %s\n",
+		   isEqualListUnorderedTest(cursorUnordered, AUnordered, BUnordered)
+			   ? "TRUE"
+			   : "FALSE");
 
 	return 0;
 }

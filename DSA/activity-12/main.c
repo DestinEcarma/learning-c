@@ -23,27 +23,27 @@ int main() {
 	printf("Set B: ");
 	printSet(&B);
 
-	Set* AuB = unionSet(&A, &B);
+	Set *AuB = unionSet(&A, &B);
 
 	printf("Union: ");
 	printSet(AuB);
 
-	Set* AnB = intersectionSet(&A, &B);
+	Set *AnB = intersectionSet(&A, &B);
 
 	printf("Intersection: ");
 	printSet(AnB);
 
-	Set* AdB = differenceSet(&A, &B);
+	Set *AdB = differenceSet(&A, &B);
 
 	printf("Difference: ");
 	printSet(AdB);
 
-	Set* Ac = complementSet(&A);
+	Set *Ac = complementSet(&A);
 
 	printf("Complement of A: ");
 	printSet(Ac);
 
-	Set* Bc = complementSet(&B);
+	Set *Bc = complementSet(&B);
 
 	printf("Complement of B: ");
 	printSet(Bc);
@@ -73,7 +73,8 @@ int main() {
 	printf("Sorted B: ");
 	printSet(&SortedB);
 
-	printf("Is equal (sorted): %s\n", isEqualSet(&SortedA, &SortedB) ? "true" : "false");
+	printf("Is equal (sorted): %s\n",
+		   isEqualSet(&SortedA, &SortedB) ? "true" : "false");
 
 	return 0;
 }

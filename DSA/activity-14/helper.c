@@ -2,8 +2,8 @@
 
 #include "helper.h"
 
-void displayBitPattern(void* value, int size) {
-	unsigned char* bytes = (unsigned char*) value;
+void displayBitPattern(void *value, int size) {
+	unsigned char *bytes = (unsigned char *)value;
 
 	// Purpose of this part is to reduce the size
 	// until it reaches the first significant bit

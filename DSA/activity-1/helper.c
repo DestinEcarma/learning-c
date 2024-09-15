@@ -13,15 +13,16 @@ void printList(List list) {
 }
 
 // * Function Definition
-void insertLast(List* list, int x) {
+void insertLast(List *list, int x) {
 	// Traverse through the linked list until it
 	// reaches the last node, and the new data
 	// must not be in the linked list
-	while (*list != NULL && (*list)->data != x) list = &((*list)->next);
+	while (*list != NULL && (*list)->data != x)
+		list = &((*list)->next);
 
 	// Check if L is the last node
 	if (*list == NULL) {
-		Node* newNode = (Node*)malloc(sizeof(Node));
+		Node *newNode = (Node *)malloc(sizeof(Node));
 
 		// Check if the allocation was a success
 		if (newNode != NULL) {

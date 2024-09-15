@@ -8,15 +8,15 @@ typedef struct {
 	int count;
 } List;
 
-void printList(List*);
+void printList(List *);
 
-void initList(List*);
+void initList(List *);
 
-void insertLast(List*, int);
-void insertLastUnique(List*, int);
-void insertSorted(List*, int);
+void insertLast(List *, int);
+void insertLastUnique(List *, int);
+void insertSorted(List *, int);
 
-void deleteElem(List*, int);
-void deleteAllOccur(List*, int);
+void deleteElem(List *, int);
+void deleteAllOccur(List *, int);
 
 #endif

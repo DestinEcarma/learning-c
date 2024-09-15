@@ -7,7 +7,7 @@ void printList(List list) {
 	while (list != NULL) {
 		printf("%d", list->data);
 
-		if (list->next != NULL){
+		if (list->next != NULL) {
 			printf(", ");
 		}
 
@@ -17,8 +17,8 @@ void printList(List list) {
 	printf("\n");
 }
 
-Node* createNode(int data) {
-	Node* node = (Node*)malloc(sizeof(Node));
+Node *createNode(int data) {
+	Node *node = (Node *)malloc(sizeof(Node));
 
 	if (node != NULL) {
 		node->data = data;

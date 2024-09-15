@@ -11,15 +11,15 @@ typedef struct node {
 void printSet(Set);
 int lengthSet(Set);
 
-void initSet(Set*);
-void insertFirst(Set*, int);
-void insertLast(Set*, int);
-void insertSorted(Set*, int);
+void initSet(Set *);
+void insertFirst(Set *, int);
+void insertLast(Set *, int);
+void insertSorted(Set *, int);
 
-void deleteFirst(Set*);
-void deleteLast(Set*);
-void deleteData(Set*, int);
-void makeNull(Set*);
+void deleteFirst(Set *);
+void deleteLast(Set *);
+void deleteData(Set *, int);
+void makeNull(Set *);
 
 bool isEqualSetSortedTest(Set, Set);
 bool isEqualSetUnsortedTest(Set, Set);

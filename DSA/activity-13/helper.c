@@ -4,7 +4,7 @@
 #include "helper.h"
 
 void printSet(Set set) {
-	for (Node* curr = set; curr != NULL; curr = curr->next) {
+	for (Node *curr = set; curr != NULL; curr = curr->next) {
 		printf("%d", curr->data);
 
 		if (curr->next != NULL) {
@@ -18,26 +18,24 @@ void printSet(Set set) {
 int lengthSet(Set set) {
 	int length = 0;
 
-	for (Node* curr = set; curr != NULL; curr = curr->next) {
+	for (Node *curr = set; curr != NULL; curr = curr->next) {
 		length++;
 	}
 
 	return length;
 }
 
-void initSet(Set* set) {
-	*set = NULL;
-}
+void initSet(Set *set) { *set = NULL; }
 
-void insertFirst(Set* set, int data) {
-	Node* trav = *set;
+void insertFirst(Set *set, int data) {
+	Node *trav = *set;
 
 	while (trav != NULL && trav->data != data) {
 		trav = trav->next;
 	}
 
 	if (trav == NULL) {
-		Node* newNode = (Node*)malloc(sizeof(Node));
+		Node *newNode = (Node *)malloc(sizeof(Node));
 
 		if (newNode != NULL) {
 			newNode->data = data;
@@ -45,16 +43,15 @@ void insertFirst(Set* set, int data) {
 			*set = newNode;
 		}
 	}
-
 }
 
-void insertLast(Set* set, int data) {
+void insertLast(Set *set, int data) {
 	while (*set != NULL && (*set)->data != data) {
 		set = &(*set)->next;
 	}
 
 	if (*set == NULL) {
-		Node* newNode = (Node*)malloc(sizeof(Node));
+		Node *newNode = (Node *)malloc(sizeof(Node));
 
 		if (newNode != NULL) {
 			newNode->data = data;
@@ -64,13 +61,13 @@ void insertLast(Set* set, int data) {
 	}
 }
 
-void insertSorted(Set* set, int data) {
+void insertSorted(Set *set, int data) {
 	while (*set != NULL && (*set)->data < data) {
 		set = &(*set)->next;
 	}
 
 	if (*set == NULL || (*set)->data != data) {
-		Node* newNode = (Node*)malloc(sizeof(Node));
+		Node *newNode = (Node *)malloc(sizeof(Node));
 
 		if (newNode != NULL) {
 			newNode->data = data;
@@ -80,39 +77,39 @@ void insertSorted(Set* set, int data) {
 	}
 }
 
-void deleteFirst(Set* set) {
+void deleteFirst(Set *set) {
 	if (*set != NULL) {
-		Node* temp = *set;
+		Node *temp = *set;
 		*set = (*set)->next;
 		free(temp);
 	}
 }
 
-void deleteLast(Set* set) {
+void deleteLast(Set *set) {
 	if (*set != NULL) {
 		while ((*set)->next != NULL) {
 			set = &(*set)->next;
 		}
 
-		Node* temp = *set;
+		Node *temp = *set;
 		*set = NULL;
 		free(temp);
 	}
 }
 
-void deleteData(Set* set, int data) {
+void deleteData(Set *set, int data) {
 	while (*set != NULL && (*set)->data != data) {
 		set = &(*set)->next;
 	}
 
 	if (*set != NULL) {
-		Node* temp = *set;
+		Node *temp = *set;
 		*set = (*set)->next;
 		free(temp);
 	}
 }
 
-void makeNull(Set* set) {
+void makeNull(Set *set) {
 	while (*set != NULL) {
 		deleteFirst(set);
 	}
@@ -130,17 +127,17 @@ bool isEqualSetSortedTest(Set A, Set B) {
 bool isEqualSetUnsortedTest(Set A, Set B) {
 	bool result = true;
 
-	int lengthA = lengthSet(A);	
+	int lengthA = lengthSet(A);
 	int lengthB = lengthSet(B);
 
 	if (lengthA != lengthB) {
 		result = false;
 	} else {
-		Node* outer = (lengthA > lengthB) ? A : B;
-		Node* inner = (lengthA > lengthB) ? B : A;
+		Node *outer = (lengthA > lengthB) ? A : B;
+		Node *inner = (lengthA > lengthB) ? B : A;
 
 		while (outer != NULL && result) {
-			Node* trav = inner;
+			Node *trav = inner;
 
 			while (trav != NULL && outer->data != inner->data) {
 				trav = trav->next;

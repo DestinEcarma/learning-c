@@ -3,8 +3,8 @@
 
 #include "helper.h"
 
-void printQueue(Queue* queue) {
-	Node* curr = queue->front;
+void printQueue(Queue *queue) {
+	Node *curr = queue->front;
 
 	while (curr != NULL) {
 		printf("%d", curr->data);
@@ -18,13 +18,13 @@ void printQueue(Queue* queue) {
 	printf("\n");
 }
 
-void initQueue(Queue* queue) {
+void initQueue(Queue *queue) {
 	queue->front = NULL;
 	queue->rear = NULL;
 }
 
-void enqueue(Queue* queue, int data) {
-	Node* newNode = (Node*)malloc(sizeof(Node));
+void enqueue(Queue *queue, int data) {
+	Node *newNode = (Node *)malloc(sizeof(Node));
 
 	if (newNode != NULL) {
 		newNode->data = data;
@@ -40,9 +40,9 @@ void enqueue(Queue* queue, int data) {
 	}
 }
 
-void dequeue(Queue* queue) {
+void dequeue(Queue *queue) {
 	if (queue->front != NULL) {
-		Node* temp = queue->front;
+		Node *temp = queue->front;
 		queue->front = temp->next;
 
 		if (queue->front == NULL) {
