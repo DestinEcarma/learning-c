@@ -30,32 +30,33 @@ void initSet(Set* set) {
 }
 
 void insertFirst(Set* set, int data) {
-	Node* newNode = (Node*)malloc(sizeof(Node));
+	Node* trav = *set;
 
-	if (newNode != NULL) {
-		Node* curr = *set;
+	while (trav != NULL && trav->data != data) {
+		trav = trav->next;
+	}
 
-		while (curr != NULL && curr->data != data) {
-			curr = curr->next;
-		}
+	if (trav == NULL) {
+		Node* newNode = (Node*)malloc(sizeof(Node));
 
-		if (curr == NULL) {
+		if (newNode != NULL) {
 			newNode->data = data;
 			newNode->next = *set;
 			*set = newNode;
 		}
 	}
+
 }
 
 void insertLast(Set* set, int data) {
-	Node* newNode = (Node*)malloc(sizeof(Node));
+	while (*set != NULL && (*set)->data != data) {
+		set = &(*set)->next;
+	}
 
-	if (newNode != NULL) {
-		while (*set != NULL && (*set)->data != data) {
-			set = &(*set)->next;
-		}
+	if (*set == NULL) {
+		Node* newNode = (Node*)malloc(sizeof(Node));
 
-		if (*set == NULL) {
+		if (newNode != NULL) {
 			newNode->data = data;
 			newNode->next = NULL;
 			*set = newNode;
@@ -64,14 +65,14 @@ void insertLast(Set* set, int data) {
 }
 
 void insertSorted(Set* set, int data) {
-	Node* newNode = (Node*)malloc(sizeof(Node));
+	while (*set != NULL && (*set)->data < data) {
+		set = &(*set)->next;
+	}
 
-	if (newNode != NULL) {
-		while (*set != NULL && (*set)->data < data) {
-			set = &(*set)->next;
-		}
+	if (*set == NULL || (*set)->data != data) {
+		Node* newNode = (Node*)malloc(sizeof(Node));
 
-		if (*set == NULL || (*set)->data != data) {
+		if (newNode != NULL) {
 			newNode->data = data;
 			newNode->next = *set;
 			*set = newNode;
