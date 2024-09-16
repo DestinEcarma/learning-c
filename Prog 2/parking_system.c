@@ -53,7 +53,9 @@ Vehicle create_vehicle(char type, String plate_num, String color,
 	return vehicle;
 }
 
-MyTime create_my_time(int hour, int minute) { return (MyTime){hour, minute}; }
+MyTime create_my_time(int hour, int minute) {
+	return (MyTime){hour, minute};
+}
 
 void display_parking_area(ParkingArea *parking_area) {
 	int available_slot = MAX(parking_area->max - parking_area->count, 0);

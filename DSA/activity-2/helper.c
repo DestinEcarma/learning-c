@@ -17,7 +17,9 @@ void printList(List list) {
 	printf("\n");
 }
 
-void initListNoHeader(List *list) { *list = NULL; }
+void initListNoHeader(List *list) {
+	*list = NULL;
+}
 
 void initListWithHeader(List *list) {
 	*list = (Node *)malloc(sizeof(Node));

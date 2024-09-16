@@ -28,7 +28,9 @@ void printStack(Stack stack) {
 	printf("\n");
 }
 
-void initialize(Stack *stack) { *stack = NULL; }
+void initialize(Stack *stack) {
+	*stack = NULL;
+}
 
 void push(Stack *stack, int data) {
 	Node *newNode = (Node *)malloc(sizeof(Node));
@@ -58,6 +60,10 @@ int top(Stack *stack) {
 	return result;
 }
 
-bool isEmpty(Stack *stack) { return *stack == NULL; }
+bool isEmpty(Stack *stack) {
+	return *stack == NULL;
+}
 
-bool isFull(Stack *) { return false; }
+bool isFull(Stack *) {
+	return false;
+}

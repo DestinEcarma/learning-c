@@ -2,3 +2,4 @@ UseTab: Always
 IndentWidth: 4
 TabWidth: 4
 IndentCaseLabels: true
+AllowShortFunctionsOnASingleLine: false

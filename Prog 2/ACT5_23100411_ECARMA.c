@@ -17,7 +17,9 @@ typedef struct {
 	int id;
 } Student, *StudentList;
 
-void displayName(Name *n) { printf("%s, %s\n", n->lname, n->fname); }
+void displayName(Name *n) {
+	printf("%s, %s\n", n->lname, n->fname);
+}
 
 void displayStudent(Student *s) {
 	displayName(&s->name);
@@ -47,7 +49,9 @@ void addStudent(StudentList list, int *count, Student s) {
 	list[(*count)++] = s;
 }
 
-int isFemale(Student *s) { return toupper(s->sex) == 'F'; }
+int isFemale(Student *s) {
+	return toupper(s->sex) == 'F';
+}
 
 int countFemale(StudentList list, int size) {
 	int count = 0;

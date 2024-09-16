@@ -25,7 +25,9 @@ int lengthSet(Set set) {
 	return length;
 }
 
-void initSet(Set *set) { *set = NULL; }
+void initSet(Set *set) {
+	*set = NULL;
+}
 
 void insertFirst(Set *set, int data) {
 	Node *trav = *set;

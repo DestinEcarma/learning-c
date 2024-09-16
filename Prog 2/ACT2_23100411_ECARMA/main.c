@@ -44,9 +44,13 @@ int testSize(size_t (*func1)(const char *str),
 	return result;
 }
 
-int isEven(int a) { return a % 2 ? 0 : a; }
+int isEven(int a) {
+	return a % 2 ? 0 : a;
+}
 
-int isOdd(int a) { return a % 2 ? a : 0; }
+int isOdd(int a) {
+	return a % 2 ? a : 0;
+}
 
 int sum(int(func)(int a)) {
 	int sum = 0;

@@ -17,7 +17,9 @@ void printList(List *list) {
 	printf("\n");
 }
 
-void initList(List *list) { list->count = 0; }
+void initList(List *list) {
+	list->count = 0;
+}
 
 void insertLast(List *list, int elem) {
 	if (list->count < MAX) {

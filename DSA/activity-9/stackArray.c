@@ -16,7 +16,9 @@ void printStack(Stack stack) {
 	printf("\n");
 }
 
-void initialize(Stack *stack) { stack->top = -1; }
+void initialize(Stack *stack) {
+	stack->top = -1;
+}
 
 void push(Stack *stack, int data) {
 	if (!isFull(stack)) {
@@ -40,6 +42,10 @@ int top(Stack *stack) {
 	return result;
 }
 
-bool isEmpty(Stack *stack) { return stack->top == -1; }
+bool isEmpty(Stack *stack) {
+	return stack->top == -1;
+}
 
-bool isFull(Stack *stack) { return stack->top == MAX - 1; }
+bool isFull(Stack *stack) {
+	return stack->top == MAX - 1;
+}

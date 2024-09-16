@@ -63,7 +63,9 @@ bool insertRear(ArrayList *list, int item) {
 	return false;
 }
 
-bool insertFront(ArrayList *list, int item) { return insertAt(list, item, 0); }
+bool insertFront(ArrayList *list, int item) {
+	return insertAt(list, item, 0);
+}
 
 bool insertAt(ArrayList *list, int item, int loc) {
 	if (list->count < MAX) {

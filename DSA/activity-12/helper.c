@@ -22,9 +22,13 @@ void zeroSet(Set *set) {
 	/*}*/
 }
 
-void insertSet(Set *set, int data) { (*set)[data] = 1; }
+void insertSet(Set *set, int data) {
+	(*set)[data] = 1;
+}
 
-void removeSet(Set *set, int data) { (*set)[data] = 0; }
+void removeSet(Set *set, int data) {
+	(*set)[data] = 0;
+}
 
 Set *unionSet(Set *A, Set *B) {
 	Set *result = (Set *)malloc(sizeof(Set));

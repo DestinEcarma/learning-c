@@ -73,7 +73,9 @@ Student retrieve(Position pos, Students *list) {
 	return result;
 }
 
-void makeNull(Students *list) { list->count = 0; }
+void makeNull(Students *list) {
+	list->count = 0;
+}
 
 void printList(Students *list) {
 	for (int i = 0; i < list->count; i++) {

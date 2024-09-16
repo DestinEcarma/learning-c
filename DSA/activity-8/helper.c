@@ -38,6 +38,10 @@ int peek(Queue *queue) {
 	return -1;
 }
 
-bool isEmpty(Queue *queue) { return queue->front == (queue->rear + 1) % MAX; }
+bool isEmpty(Queue *queue) {
+	return queue->front == (queue->rear + 1) % MAX;
+}
 
-bool isFull(Queue *queue) { return queue->front == (queue->rear + 2) % MAX; }
+bool isFull(Queue *queue) {
+	return queue->front == (queue->rear + 2) % MAX;
+}
