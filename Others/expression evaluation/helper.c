@@ -13,16 +13,16 @@ bool isClosingParenthesis(char c) { return c == ')'; }
 
 Precedence getPrecedence(char c) {
 	switch (c) {
-	case '+':
-	case '-':
-		return Low;
-	case '*':
-	case '/':
-		return Medium;
-	case '^':
-		return High;
-	default:
-		return None;
+		case '+':
+		case '-':
+			return Low;
+		case '*':
+		case '/':
+			return Medium;
+		case '^':
+			return High;
+		default:
+			return None;
 	}
 }
 

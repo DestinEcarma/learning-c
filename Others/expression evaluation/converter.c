@@ -64,21 +64,21 @@ int evaluatePostfix(TokenList postfix) {
 			int a = stack[stackTop--];
 
 			switch (token.value) {
-			case '+':
-				stack[++stackTop] = a + b;
-				break;
-			case '-':
-				stack[++stackTop] = a - b;
-				break;
-			case '*':
-				stack[++stackTop] = a * b;
-				break;
-			case '/':
-				stack[++stackTop] = a / b;
-				break;
-			case '^':
-				stack[++stackTop] = a ^ b;
-				break;
+				case '+':
+					stack[++stackTop] = a + b;
+					break;
+				case '-':
+					stack[++stackTop] = a - b;
+					break;
+				case '*':
+					stack[++stackTop] = a * b;
+					break;
+				case '/':
+					stack[++stackTop] = a / b;
+					break;
+				case '^':
+					stack[++stackTop] = a ^ b;
+					break;
 			}
 		}
 	}

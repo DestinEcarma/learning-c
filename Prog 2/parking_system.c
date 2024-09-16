@@ -175,15 +175,15 @@ void print_parking_receipt(ParkingInfo *parking_info) {
 	float additional_charge;
 
 	switch (temp_vehicle->type) {
-	case 'A':
-		initial_charge = 30 * first_3_hours;
-		break;
-	case 'B':
-		initial_charge = 40 * first_3_hours;
-		break;
-	case 'C':
-		initial_charge = 100 * first_3_hours;
-		break;
+		case 'A':
+			initial_charge = 30 * first_3_hours;
+			break;
+		case 'B':
+			initial_charge = 40 * first_3_hours;
+			break;
+		case 'C':
+			initial_charge = 100 * first_3_hours;
+			break;
 	}
 
 	additional_charge = after_3_hours * 10;

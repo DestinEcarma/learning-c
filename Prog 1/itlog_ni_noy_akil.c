@@ -23,15 +23,15 @@ int main(void) {
 	float price;
 
 	switch (eggType) {
-	case 1:
-		price = 15.0;
-		break;
-	case 2:
-		price = 22.5;
-		break;
-	case 3:
-		price = 13.0;
-		break;
+		case 1:
+			price = 15.0;
+			break;
+		case 2:
+			price = 22.5;
+			break;
+		case 3:
+			price = 13.0;
+			break;
 	}
 
 	float discount = 0, discountedPrice = 0;

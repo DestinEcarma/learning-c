@@ -8,22 +8,22 @@ int main() {
 
 	if (letter >= 65 && letter <= 90 || letter >= 97 && letter <= 122) {
 		switch (letter) {
-		case 'a':
-		case 'e':
-		case 'i':
-		case 'o':
-		case 'u':
-		case 'A':
-		case 'E':
-		case 'I':
-		case 'O':
-		case 'U':
-			printf("The character is a vowel.");
-			break;
+			case 'a':
+			case 'e':
+			case 'i':
+			case 'o':
+			case 'u':
+			case 'A':
+			case 'E':
+			case 'I':
+			case 'O':
+			case 'U':
+				printf("The character is a vowel.");
+				break;
 
-		default:
-			printf("The character is a consonant.");
-			break;
+			default:
+				printf("The character is a consonant.");
+				break;
 		}
 	} else
 		printf("Invalid input.");
