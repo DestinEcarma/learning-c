@@ -7,7 +7,7 @@
 List newList(int capacity, size_t size) {
 	List list;
 
-	list.list = (void *)malloc(capacity * size);
+	list.list = malloc(capacity * size);
 	list.length = 0;
 	list.capacity = capacity;
 	list.size = size;
