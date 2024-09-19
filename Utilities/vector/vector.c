@@ -7,7 +7,7 @@
 Vector newVector(int capacity, size_t size) {
 	Vector vector;
 
-	vector.list = (void *)malloc(capacity * size);
+	vector.list = malloc(capacity * size);
 	vector.length = 0;
 	vector.capacity = capacity;
 	vector.size = size;
@@ -41,7 +41,7 @@ bool vectorSet(Vector *vector, size_t index, void *element) {
 bool vectorPush(Vector *vector, void *element) {
 	if (vector->length == vector->capacity) {
 		void *newList =
-			(void *)realloc(vector->list, vector->capacity * 2 * vector->size);
+			realloc(vector->list, vector->capacity * 2 * vector->size);
 
 		if (newList == NULL) {
 			return false;
