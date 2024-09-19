@@ -9,7 +9,7 @@ char *readCliString(const size_t length) {
 
 	fgets(prompt, length, stdin);
 
-	return strcpy((char *)malloc(strlen(prompt) + 1), prompt);
+	return strcpy(malloc(strlen(prompt) + 1), prompt);
 }
 
 char readCliChar() {
