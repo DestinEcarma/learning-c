@@ -142,7 +142,7 @@ bool isEqualSetUnsortedTest(Set A, Set B) {
 				trav = trav->next;
 			}
 
-			result = B != NULL;
+			result = trav != NULL;
 			A = outer->next;
 		}
 	}
