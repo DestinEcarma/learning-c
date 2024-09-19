@@ -138,7 +138,7 @@ bool isEqualSetUnsortedTest(Set A, Set B) {
 		while (A != NULL && result) {
 			Node *trav = B;
 
-			while (trav != NULL && A->data != B->data) {
+			while (trav != NULL && A->data != trav->data) {
 				trav = trav->next;
 			}
 
