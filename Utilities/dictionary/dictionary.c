@@ -15,7 +15,7 @@ Dictionary newDictionary() {
 	return dictionary;
 }
 
-void *dictionaryGet(Dictionary *dictionary, char *key) {
+void *dictionaryGet(Dictionary *dictionary, const char *key) {
 	for (size_t i = 0; i < dictionary->length; i++) {
 		if (strcmp(dictionary->list[i].key, key) == 0) {
 			return dictionary->list[i].value;
@@ -25,15 +25,15 @@ void *dictionaryGet(Dictionary *dictionary, char *key) {
 	return NULL;
 }
 
-bool dictionarySet(Dictionary *dictionary, char *key, void *value,
+bool dictionarySet(Dictionary *dictionary, const char *key, void *value,
 				   size_t size) {
 	KeyValuePair *list = dictionary->list;
 	size_t length = dictionary->length;
 
 	for (size_t i = 0; i < length; i++) {
 		if (strcmp(list[i].key, key) == 0) {
-			if (list[i].size > size) {
-				void *newValue = (void *)realloc(list[i].value, size);
+			if (list[i].size != size) {
+				void *newValue = realloc(list[i].value, size);
 
 				if (newValue == NULL) {
 					return false;
@@ -49,8 +49,8 @@ bool dictionarySet(Dictionary *dictionary, char *key, void *value,
 	}
 
 	if (length == dictionary->capacity) {
-		KeyValuePair *newList = (KeyValuePair *)realloc(
-			list, dictionary->capacity * 2 * sizeof(KeyValuePair));
+		KeyValuePair *newList =
+			realloc(list, dictionary->capacity * 2 * sizeof(KeyValuePair));
 
 		if (newList == NULL) {
 			return false;
@@ -61,12 +61,13 @@ bool dictionarySet(Dictionary *dictionary, char *key, void *value,
 		list = newList;
 	}
 
-	list[length].key = (char *)malloc(strlen(key) + 1);
-	list[length].value = (void *)malloc(size);
+	list[length].key = malloc(strlen(key) + 1);
+	list[length].value = malloc(size);
 	list[length].size = size;
 
 	if (list[length].key == NULL || list[length].value == NULL) {
 		free(list[length].key);
+		free(list[length].value);
 		return false;
 	}
 
@@ -78,7 +79,7 @@ bool dictionarySet(Dictionary *dictionary, char *key, void *value,
 	return true;
 }
 
-bool dictionaryRemove(Dictionary *dictionary, char *key) {
+bool dictionaryRemove(Dictionary *dictionary, const char *key) {
 	KeyValuePair *list = dictionary->list;
 	size_t length = dictionary->length;
 
@@ -87,10 +88,7 @@ bool dictionaryRemove(Dictionary *dictionary, char *key) {
 			free(list[i].key);
 			free(list[i].value);
 
-			for (size_t j = i; j < length - 1; j++) {
-				list[j] = list[j + 1];
-			}
-
+			list[i] = list[length - 1];
 			dictionary->length--;
 
 			return true;

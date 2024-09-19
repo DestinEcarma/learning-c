@@ -20,9 +20,11 @@ typedef struct {
 
 Dictionary newDictionary();
 
-void *dictionaryGet(Dictionary *dictionary, char *key);
+void *dictionaryGet(Dictionary *dictionary, const char *key);
 
-bool dictionarySet(Dictionary *dictionary, char *key, void *value, size_t size);
-bool dictionaryRemove(Dictionary *dictionary, char *key);
+bool dictionarySet(Dictionary *dictionary, const char *key, void *value,
+				   size_t size);
+
+bool dictionaryRemove(Dictionary *dictionary, const char *key);
 
 #endif
