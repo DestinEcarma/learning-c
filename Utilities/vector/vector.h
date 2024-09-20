@@ -4,21 +4,22 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-typedef struct {
-	void *list;
-	size_t length;
-	size_t capacity;
-	size_t size;
-} Vector;
+typedef void *Vector;
 
-Vector newVector(int capacity, size_t size);
+// Public functions
 
-size_t vectorLength(Vector *vector);
+Vector new_vector(size_t typeSize);
 
-void *vectorGet(Vector *vector, size_t index);
-bool vectorSet(Vector *vector, size_t index, void *element);
+void vector_free(Vector vector);
+size_t vector_length(Vector vector);
 
-bool vectorPush(Vector *vector, void *element);
-void *vectorPop(Vector *vector);
+#define vector_push(vector, element)                                           \
+	(_vector_push((Vector *)&(vector), &element))
+#define vector_pop(vector) (_vector_pop((Vector *)&vector))
+
+// Private functions
+
+bool _vector_push(Vector *vector, void *element);
+void *_vector_pop(Vector *vector);
 
 #endif
