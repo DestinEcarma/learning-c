@@ -4,65 +4,76 @@
 
 #include "vector.h"
 
-Vector newVector(int capacity, size_t size) {
-	Vector vector;
+typedef struct {
+	size_t length;
+	size_t capacity;
+	size_t typeSize;
+	unsigned char data[];
+} VectorHeader;
 
-	vector.list = malloc(capacity * size);
-	vector.length = 0;
-	vector.capacity = capacity;
-	vector.size = size;
-
-	return vector;
+VectorHeader *_vector_header(Vector vector) {
+	return (VectorHeader *)vector - 1;
 }
 
-size_t vectorLength(Vector *vector) {
-	return vector->length;
-}
+VectorHeader *_vector_realloc(VectorHeader *header) {
+	size_t newCapacity = header->capacity == 0 ? 1 : header->capacity * 2;
+	size_t size = sizeof(VectorHeader) + newCapacity * header->typeSize;
 
-void *vectorGet(Vector *vector, size_t index) {
-	if (index >= vector->length) {
-		return NULL;
+	VectorHeader *newHeader = realloc(header, size);
+
+	if (newHeader != NULL) {
+		newHeader->capacity = newCapacity;
 	}
 
-	return vector->list + index * vector->size;
+	return newHeader;
 }
 
-bool vectorSet(Vector *vector, size_t index, void *element) {
-	if (index >= vector->length) {
-		return false;
-	}
+Vector new_vector(size_t typeSize) {
+	VectorHeader *header = malloc(sizeof(VectorHeader));
 
-	void *dest = vector->list + index * vector->size;
-	memcpy(dest, element, vector->size);
+	header->length = 0;
+	header->capacity = 0;
+	header->typeSize = typeSize;
 
-	return true;
+	return &header->data;
 }
 
-bool vectorPush(Vector *vector, void *element) {
-	if (vector->length == vector->capacity) {
-		void *newList =
-			realloc(vector->list, vector->capacity * 2 * vector->size);
+void vector_free(Vector vector) {
+	free(_vector_header(vector));
+}
 
-		if (newList == NULL) {
+size_t vector_length(Vector vector) {
+	return _vector_header(vector)->length;
+}
+
+bool _vector_push(Vector *vector, void *element) {
+	VectorHeader *header = _vector_header(*vector);
+
+	if (header->length == header->capacity) {
+		VectorHeader *newHeader = _vector_realloc(header);
+
+		if (newHeader == NULL) {
 			return false;
 		}
 
-		vector->capacity *= 2;
-		vector->list = newList;
+		*vector = newHeader->data;
+		header = newHeader;
 	}
 
-	void *dest = vector->list + vector->length * vector->size;
-	memcpy(dest, element, vector->size);
-	vector->length++;
+	void *dest = header->data + header->length * header->typeSize;
+	memcpy(dest, element, header->typeSize);
+	header->length++;
 
 	return true;
 }
 
-void *vectorPop(Vector *vector) {
-	if (vector->length == 0) {
+void *_vector_pop(Vector *vector) {
+	VectorHeader *header = _vector_header(*vector);
+
+	if (header->length == 0) {
 		return NULL;
 	}
 
-	vector->length--;
-	return vector->list + vector->length * vector->size;
+	header->length--;
+	return header->data + header->length * header->typeSize;
 }
