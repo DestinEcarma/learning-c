@@ -9,6 +9,8 @@ char *readCliString(const size_t length) {
 
 	fgets(prompt, length, stdin);
 
+	prompt[strcspn(prompt, "\n")] = '\0';
+
 	return strcpy(malloc(strlen(prompt) + 1), prompt);
 }
 
