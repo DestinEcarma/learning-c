@@ -18,13 +18,17 @@ typedef struct {
 	size_t capacity;
 } Dictionary;
 
+// Create a new dictionary.
 Dictionary newDictionary();
 
+// Get a value from the dictionary.
 void *dictionaryGet(Dictionary *dictionary, const char *key);
 
+// Set a value in the dictionary.
 bool dictionarySet(Dictionary *dictionary, const char *key, void *value,
 				   size_t size);
 
-bool dictionaryRemove(Dictionary *dictionary, const char *key);
+// Unset a value in the dictionary.
+bool dictionaryUnset(Dictionary *dictionary, const char *key);
 
 #endif
