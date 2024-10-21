@@ -16,9 +16,9 @@ void dictionaryAdd(Dictionary *dict, int data) {
 	int hash = dictionaryHash(data);
 
 	int firstDeleted = -1;
-	int attempt;
+	int attempt = 0;
 
-	for (attempt = 0; attempt < MAX; attempt++) {
+	while (attempt < MAX) {
 		if (dict->list[hash] == EMPTY) {
 			attempt = MAX;
 		} else if (dict->list[hash] == DELETED && firstDeleted == -1) {
@@ -26,9 +26,11 @@ void dictionaryAdd(Dictionary *dict, int data) {
 		} else {
 			hash = (hash + 1) % MAX;
 		}
+
+		attempt++;
 	}
 
-	if (attempt != MAX) {
+	if (attempt > MAX) {
 		dict->list[hash] = data;
 	} else if (firstDeleted != -1) {
 		dict->list[firstDeleted] = data;
@@ -38,17 +40,19 @@ void dictionaryAdd(Dictionary *dict, int data) {
 void dictionaryDelete(Dictionary *dict, int data) {
 	int hash = dictionaryHash(data);
 
-	int attempt;
+	int attempt = 0;
 
-	for (attempt = 0; attempt < MAX; attempt++) {
+	while (attempt < MAX) {
 		if (dict->list[hash] == data) {
 			attempt = MAX;
 		} else {
 			hash = (hash + 1) % MAX;
 		}
+
+		attempt++;
 	}
 
-	if (attempt != MAX) {
+	if (attempt > MAX) {
 		dict->list[hash] = DELETED;
 	}
 }
