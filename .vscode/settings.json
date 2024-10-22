@@ -4,6 +4,6 @@
 		"test_ACT2_23100411_ECARMA.C": "cpp"
 	},
 	"code-runner.executorMap": {
-		"c": "gcc $fileName -o ./.output/$fileNameWithoutExt && ./.output/$fileNameWithoutExt",
-	},
+		"c": "gcc $fileName -o ./.output/$fileNameWithoutExt && ./.output/$fileNameWithoutExt"
+	}
 }
