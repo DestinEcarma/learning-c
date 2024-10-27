@@ -9,16 +9,13 @@
 
 typedef char Board[TILES];
 
-typedef struct {
-	uint32_t row;
-	uint32_t col;
-} Cell;
-
 Board *board_from(const char *state);
 
 bool board_is_solved(const Board *board);
 
-bool board_add(Board *board, Cell cell, uint32_t digit);
+bool board_add(Board *board, uint32_t square, uint32_t digit);
+
+void board_set(Board *board, uint32_t square, unsigned char value);
 
 bool board_valid(const Board *board);
 

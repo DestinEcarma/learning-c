@@ -9,7 +9,7 @@ Board *board_from(const char *state) {
 	Board *board = malloc(sizeof(Board));
 
 	if (board == NULL) {
-		printf("Memory allocation failed\n");
+		fprintf(stderr, "Memory allocation failed\n");
 		exit(1);
 	}
 
@@ -22,9 +22,7 @@ Board *board_from(const char *state) {
 			continue;
 		}
 
-		Cell cell = {square / CELLS, square % CELLS};
-
-		if (!board_add(board, cell, state[square] - '0')) {
+		if (!board_add(board, square, state[square] - '0')) {
 			printf("Invalid board state\n");
 			exit(1);
 		}
@@ -43,24 +41,25 @@ bool board_is_solved(const Board *board) {
 	return true;
 }
 
-bool board_add(Board *board, Cell cell, uint32_t digit) {
-	if (cell.row >= CELLS || cell.col >= CELLS || digit > 9) {
+bool board_add(Board *board, uint32_t square, uint32_t digit) {
+	if (square >= TILES || digit > 9) {
 		return false;
 	}
 
-	uint32_t square = cell.row * CELLS + cell.col;
-
 	const char prev = (*board)[square];
 
-	(*board)[square] = digit + '0';
+	board_set(board, square, digit + '0');
 
 	if (!board_valid(board)) {
-		(*board)[square] = prev;
-
+		board_set(board, square, prev);
 		return false;
 	}
 
 	return true;
+}
+
+void board_set(Board *board, uint32_t square, unsigned char value) {
+	(*board)[square] = value;
 }
 
 bool board_valid(const Board *board) {
@@ -102,4 +101,6 @@ void board_print(const Board *board) {
 
 		printf("\n");
 	}
+
+	printf("\n");
 }

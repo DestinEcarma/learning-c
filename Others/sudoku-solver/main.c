@@ -1,10 +1,15 @@
+#include <stdio.h>
+
 #include "solver.h"
 #include "sudoku.h"
 
-int main() {
-	/*Board *board = board_from("53..7....6..195....98....6.8...6...34..8.3.."*/
-	/*						  "17...2...6.6....28....419..5....8..79");*/
-	Board *board = board_from("1");
+int main(const int argc, const char *argv[]) {
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <state>\n", argv[0]);
+		return 1;
+	}
+
+	Board *board = board_from(argv[1]);
 
 	board_print(board);
 

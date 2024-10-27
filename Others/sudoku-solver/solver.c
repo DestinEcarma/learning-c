@@ -1,5 +1,4 @@
 #include <stdbool.h>
-#include <stdio.h>
 
 #include "solver.h"
 #include "sudoku.h"
@@ -9,16 +8,15 @@
 typedef struct {
 	uint32_t square;
 	uint32_t size;
-	uint32_t candidates[MAX_CANDIDATES];
+	unsigned char candidates[MAX_CANDIDATES];
 } HeuristicValues;
 
-bool is_valid_move(Board *board, Cell cell, uint32_t digit) {
-	uint32_t square = cell.row * CELLS + cell.col;
+bool is_valid_move(Board *board, uint32_t square, unsigned char digit) {
 	unsigned char prev_char = (*board)[square];
 
-	(*board)[square] = digit + '0';
+	board_set(board, square, digit);
 	bool result = board_valid(board);
-	(*board)[square] = prev_char;
+	board_set(board, square, prev_char);
 
 	return result;
 }
@@ -26,10 +24,8 @@ bool is_valid_move(Board *board, Cell cell, uint32_t digit) {
 HeuristicValues get_heuristic_values(Board *board, uint32_t square) {
 	HeuristicValues values = {square, 0, {}};
 
-	for (uint32_t digit = 1; digit <= MAX_CANDIDATES; digit++) {
-		Cell cell = {square / CELLS, square % CELLS};
-
-		if (is_valid_move(board, cell, digit)) {
+	for (unsigned char digit = '1'; digit <= '9'; digit++) {
+		if (is_valid_move(board, square, digit)) {
 			values.candidates[values.size++] = digit;
 		}
 	}
@@ -38,10 +34,6 @@ HeuristicValues get_heuristic_values(Board *board, uint32_t square) {
 }
 
 bool solve(Board *board) {
-	if (board_is_solved(board)) {
-		return true;
-	}
-
 	HeuristicValues lowest = {0, MAX_CANDIDATES + 1, {}};
 
 	for (uint32_t square = 0; square < TILES; square++) {
@@ -51,29 +43,42 @@ bool solve(Board *board) {
 
 		HeuristicValues values = get_heuristic_values(board, square);
 
-		if (values.size < lowest.size) {
+		if (values.size > 0 && values.size < lowest.size) {
 			lowest = values;
 		}
 	}
 
-	if (lowest.size == 0) {
-		return false;
-	}
+	if (lowest.size <= MAX_CANDIDATES) {
+		for (uint32_t i = 0; i < lowest.size; i++) {
+			board_set(board, lowest.square, lowest.candidates[i]);
+			solve(board);
 
-	Cell cell = {lowest.square / CELLS, lowest.square % CELLS};
-	printf("Square: %d, Candidates: %d\n", lowest.square, lowest.size);
+			if (board_is_solved(board)) {
+				return true;
+			}
 
-	for (uint32_t i = 0; i < lowest.size; i++) {
-		unsigned char prev_char = (*board)[lowest.square];
-
-		board_print(board);
-		printf("\n");
-		board_add(board, cell, lowest.candidates[i]);
-
-		if (solve(board) == false) {
-			(*board)[lowest.square] = prev_char;
+			board_set(board, lowest.square, '.');
 		}
 	}
 
-	return true;
+	return false;
+}
+
+void _solve_all(Board *board, uint32_t square) {
+	if (square == TILES) {
+		board_print(board);
+		return;
+	}
+
+	if ((*board)[square] != '.') {
+		_solve_all(board, square + 1);
+		return;
+	}
+
+	for (uint32_t digit = 1; digit <= MAX_CANDIDATES; digit++) {
+		if (board_add(board, square, digit)) {
+			_solve_all(board, square + 1);
+			board_set(board, square, '.');
+		}
+	}
 }
