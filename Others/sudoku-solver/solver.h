@@ -7,7 +7,7 @@
 
 #define solve_all(board) _solve_all(board, 0)
 
-bool solve(Board *board);
+void solve(Board *board);
 
 void _solve_all(Board *board, uint32_t square);
 

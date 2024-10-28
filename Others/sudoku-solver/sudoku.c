@@ -22,7 +22,7 @@ Board *board_from(const char *state) {
 			continue;
 		}
 
-		if (!board_add(board, square, state[square] - '0')) {
+		if (!board_add(board, square, state[square])) {
 			printf("Invalid board state\n");
 			exit(1);
 		}
@@ -41,14 +41,14 @@ bool board_is_solved(const Board *board) {
 	return true;
 }
 
-bool board_add(Board *board, uint32_t square, uint32_t digit) {
-	if (square >= TILES || digit > 9) {
+bool board_add(Board *board, uint32_t square, unsigned char digit) {
+	if (square >= TILES || digit > '9') {
 		return false;
 	}
 
 	const char prev = (*board)[square];
 
-	board_set(board, square, digit + '0');
+	board_set(board, square, digit);
 
 	if (!board_valid(board)) {
 		board_set(board, square, prev);

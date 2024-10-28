@@ -33,7 +33,7 @@ HeuristicValues get_heuristic_values(Board *board, uint32_t square) {
 	return values;
 }
 
-bool solve(Board *board) {
+void solve(Board *board) {
 	HeuristicValues lowest = {0, MAX_CANDIDATES + 1, {}};
 
 	for (uint32_t square = 0; square < TILES; square++) {
@@ -54,14 +54,12 @@ bool solve(Board *board) {
 			solve(board);
 
 			if (board_is_solved(board)) {
-				return true;
+				return;
 			}
 
 			board_set(board, lowest.square, '.');
 		}
 	}
-
-	return false;
 }
 
 void _solve_all(Board *board, uint32_t square) {
@@ -75,7 +73,7 @@ void _solve_all(Board *board, uint32_t square) {
 		return;
 	}
 
-	for (uint32_t digit = 1; digit <= MAX_CANDIDATES; digit++) {
+	for (unsigned char digit = '1'; digit <= '9'; digit++) {
 		if (board_add(board, square, digit)) {
 			_solve_all(board, square + 1);
 			board_set(board, square, '.');

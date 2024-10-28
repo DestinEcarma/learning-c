@@ -13,7 +13,7 @@ Board *board_from(const char *state);
 
 bool board_is_solved(const Board *board);
 
-bool board_add(Board *board, uint32_t square, uint32_t digit);
+bool board_add(Board *board, uint32_t square, unsigned char digit);
 
 void board_set(Board *board, uint32_t square, unsigned char value);
 
