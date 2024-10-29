@@ -33,7 +33,7 @@ HeuristicValues get_heuristic_values(Board *board, uint32_t square) {
 	return values;
 }
 
-void solve(Board *board) {
+void heuristic_search(Board *board) {
 	HeuristicValues lowest = {0, MAX_CANDIDATES + 1, {}};
 
 	for (uint32_t square = 0; square < TILES; square++) {
@@ -51,7 +51,7 @@ void solve(Board *board) {
 	if (lowest.size <= MAX_CANDIDATES) {
 		for (uint32_t i = 0; i < lowest.size; i++) {
 			board_set(board, lowest.square, lowest.candidates[i]);
-			solve(board);
+			heuristic_search(board);
 
 			if (board_is_solved(board)) {
 				return;

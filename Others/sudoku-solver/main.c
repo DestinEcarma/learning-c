@@ -13,7 +13,7 @@ int main(const int argc, const char *argv[]) {
 
 	board_print(board);
 
-	solve(board);
+	heuristic_search(board);
 
 	board_print(board);
 
