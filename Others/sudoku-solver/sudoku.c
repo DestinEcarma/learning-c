@@ -17,7 +17,7 @@ Board *board_from(const char *state) {
 
 	memset(*board, '.', sizeof(Board));
 
-	for (uint32_t square = 0; square < len; square++) {
+	for (Square square = 0; square < len; square++) {
 		if (state[square] == '.') {
 			continue;
 		}
@@ -32,7 +32,7 @@ Board *board_from(const char *state) {
 }
 
 bool board_is_solved(const Board *board) {
-	for (uint32_t square = 0; square < TILES; square++) {
+	for (Square square = 0; square < TILES; square++) {
 		if ((*board)[square] == '.') {
 			return false;
 		}
@@ -41,7 +41,7 @@ bool board_is_solved(const Board *board) {
 	return true;
 }
 
-bool board_add(Board *board, uint32_t square, unsigned char digit) {
+bool board_add(Board *board, Square square, Digit digit) {
 	if (square >= TILES || digit > '9') {
 		return false;
 	}
@@ -58,8 +58,12 @@ bool board_add(Board *board, uint32_t square, unsigned char digit) {
 	return true;
 }
 
-void board_set(Board *board, uint32_t square, unsigned char value) {
+inline void board_set(Board *board, Square square, unsigned char value) {
 	(*board)[square] = value;
+}
+
+inline Digit board_get(const Board *board, Square square) {
+	return (*board)[square];
 }
 
 bool board_valid(const Board *board) {
@@ -69,13 +73,13 @@ bool board_valid(const Board *board) {
 
 	for (uint32_t row_idx = 0; row_idx < CELLS; row_idx++) {
 		for (uint32_t col_idx = 0; col_idx < CELLS; col_idx++) {
-			uint32_t square = row_idx * CELLS + col_idx;
+			Square square = row_idx * CELLS + col_idx;
 
 			if ((*board)[square] == '.') {
 				continue;
 			}
 
-			uint32_t digit = (*board)[square] - '1';
+			Digit digit = (*board)[square] - '1';
 			uint32_t mask = 1 << digit;
 			uint32_t cell_idx = row_idx / 3 * 3 + col_idx / 3;
 

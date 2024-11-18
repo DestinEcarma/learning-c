@@ -6,13 +6,13 @@
 #define MAX_CANDIDATES 9
 
 typedef struct {
-	uint32_t square;
+	Square square;
 	uint32_t size;
-	unsigned char candidates[MAX_CANDIDATES];
+	Digit candidates[MAX_CANDIDATES];
 } HeuristicValues;
 
-bool is_valid_move(Board *board, uint32_t square, unsigned char digit) {
-	unsigned char prev_char = (*board)[square];
+bool is_valid_move(Board *board, Square square, Digit digit) {
+	Digit prev_char = board_get(board, square);
 
 	board_set(board, square, digit);
 	bool result = board_valid(board);
@@ -21,10 +21,10 @@ bool is_valid_move(Board *board, uint32_t square, unsigned char digit) {
 	return result;
 }
 
-HeuristicValues get_heuristic_values(Board *board, uint32_t square) {
+HeuristicValues get_heuristic_values(Board *board, Square square) {
 	HeuristicValues values = {square, 0, {}};
 
-	for (unsigned char digit = '1'; digit <= '9'; digit++) {
+	for (Digit digit = '1'; digit <= '9'; digit++) {
 		if (is_valid_move(board, square, digit)) {
 			values.candidates[values.size++] = digit;
 		}
@@ -36,7 +36,7 @@ HeuristicValues get_heuristic_values(Board *board, uint32_t square) {
 void heuristic_search(Board *board) {
 	HeuristicValues lowest = {0, MAX_CANDIDATES + 1, {}};
 
-	for (uint32_t square = 0; square < TILES; square++) {
+	for (Square square = 0; square < TILES; square++) {
 		if ((*board)[square] != '.') {
 			continue;
 		}
@@ -62,7 +62,7 @@ void heuristic_search(Board *board) {
 	}
 }
 
-void _solve_all(Board *board, uint32_t square) {
+void _solve_all(Board *board, Square square) {
 	if (square == TILES) {
 		board_print(board);
 		return;
@@ -73,7 +73,7 @@ void _solve_all(Board *board, uint32_t square) {
 		return;
 	}
 
-	for (unsigned char digit = '1'; digit <= '9'; digit++) {
+	for (Digit digit = '1'; digit <= '9'; digit++) {
 		if (board_add(board, square, digit)) {
 			_solve_all(board, square + 1);
 			board_set(board, square, '.');
