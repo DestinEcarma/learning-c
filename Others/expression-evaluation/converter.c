@@ -47,7 +47,7 @@ TokenList infixToPostfix(String infix) {
 }
 
 int evaluatePostfix(TokenList postfix) {
-	int stack[postfix.count] = {};
+	int *stack = (int *)calloc(postfix.count, sizeof(int));
 	int stackTop = -1;
 
 	for (int i = 0; i < postfix.count; i++) {
@@ -83,5 +83,8 @@ int evaluatePostfix(TokenList postfix) {
 		}
 	}
 
-	return stack[stackTop];
+	int result = stack[stackTop];
+
+	free(stack);
+	return result;
 }
