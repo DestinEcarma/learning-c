@@ -1,10 +1,19 @@
+# Change the commands that needs to be used for Windows and Unix systems
+ifeq ($(OS),Windows_NT)
+    EXE_EXT = .exe
+    MKDIR = mkdir
+    RM = rmdir /S /Q
+	SEP = \\
+else
+    EXE_EXT = 
+    MKDIR = mkdir -p
+    RM = rm -rf
+	SEP = /
+endif
+
 # Source and header files
-SOURCES = runner.c main.c
-HEADERS = runner.h
-SOURCES_ARRAY = stackArray.c $(SOURCES)
-HEADERS_ARRAY = stackArray.h $(HEADERS)
-SOURCES_LL = stackLinkedList.c $(SOURCES)
-HEADERS_LL = stackLinkedList.h $(HEADERS)
+SOURCES = stackArray.c runner.c main.c
+HEADERS = stackArray.h runner.h
 
 # Compiler and flags
 CC = gcc
@@ -12,34 +21,35 @@ CFLAGS = -Wall -Wextra -std=c11
 
 # Directory
 TARGET_DIR = target
-BIN_DIR = $(TARGET_DIR)/bin
-OBJ_DIR = $(TARGET_DIR)/obj
+BIN_DIR = $(TARGET_DIR)$(SEP)bin
+OBJ_DIR = $(TARGET_DIR)$(SEP)obj
 
 # Object files
-OBJECTS_ARRAY = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SOURCES_ARRAY))
-OBJECTS_LL = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SOURCES_LL))
+OBJECTS = $(patsubst %.c,$(OBJ_DIR)$(SEP)%.o,$(SOURCES))
 
 # Target executable
-TARGET_LL = $(BIN_DIR)/linkedlist
-TARGET_ARRAY = $(BIN_DIR)/array
+TARGET = $(BIN_DIR)$(SEP)main$(EXE_EXT)
+
+# Default rule to run the program
+default: run
+all: $(TARGET)
 
 # Rule to link the object files to create the executable
-array: $(OBJECTS_ARRAY) | $(BIN_DIR)
-	$(CC) $(CFLAGS) -o $(TARGET_ARRAY) $(OBJECTS_ARRAY)
-	./$(TARGET_ARRAY)
-
-ll: $(OBJECTS_LL) | $(BIN_DIR)
-	$(CC) $(CFLAGS) -o $(TARGET_LL) $(OBJECTS_LL)
-	./$(TARGET_LL)
+$(TARGET): $(OBJECTS) | $(BIN_DIR)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
 
 # Rule to compile the .c files into .o files
-$(OBJ_DIR)/%.o: %.c $(HEADERS) | $(OBJ_DIR)
+$(OBJ_DIR)$(SEP)%.o: %.c $(HEADERS) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Rule to create the target directories if they don't exist
 $(BIN_DIR) $(OBJ_DIR):
-	mkdir -p $@
+	$(MKDIR) $@
 
 # Rule to clean up the compiled files
 clean:
-	rm -rf $(TARGET_DIR)
+	$(RM) $(TARGET_DIR)
+
+# Rule to run the program
+run: $(TARGET)
+	.$(SEP)$(TARGET)
