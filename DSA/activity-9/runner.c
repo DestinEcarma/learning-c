@@ -1,7 +1,7 @@
 #include "runner.h"
 
-/*#include "stackArray.h"*/
-#include "stackLinkedList.h"
+#include "stackArray.h"
+/*#include "stackLinkedList.h"*/
 
 void runner() {
 	Stack stack;
