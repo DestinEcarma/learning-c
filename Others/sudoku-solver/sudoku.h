@@ -2,6 +2,7 @@
 #define SUDOKU_H
 
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdlib.h>
 
 #define TILES 81
