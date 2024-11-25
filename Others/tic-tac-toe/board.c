@@ -38,7 +38,7 @@ Board new_board() {
 }
 
 void board_display(Board *board) {
-	printf("+———+———+———+\n");
+	printf("+---+---+---+\n");
 
 	for (int row = 0; row < GRID_SIZE; row++) {
 		for (int col = 0; col < GRID_SIZE; col++) {
@@ -51,7 +51,7 @@ void board_display(Board *board) {
 			}
 		}
 
-		printf("+———+———+———+\n");
+		printf("+---+---+---+\n");
 	}
 }
 

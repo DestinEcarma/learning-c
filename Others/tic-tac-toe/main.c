@@ -9,13 +9,13 @@ int main() {
 	while (true) {
 		// clang-format off
 		printf("\nTo play, enter a number from 1 to 9 based on the following grid:\n");
-		printf("+———+———+———+\n");
+		printf("+---+---+---+\n");
 		printf("| 1 | 2 | 3 |\n");
-		printf("+———+———+———+\n");
+		printf("+---+---+---+\n");
 		printf("| 4 | 5 | 6 |\n");
-		printf("+———+———+———+\n");
+		printf("+---+---+---+\n");
 		printf("| 7 | 8 | 9 |\n");
-		printf("+———+———+———+\n");
+		printf("+---+---+---+\n");
 		// clang-format on
 
 		Board board = new_board();
