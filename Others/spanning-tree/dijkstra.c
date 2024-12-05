@@ -36,7 +36,7 @@ void dijkstra(Matrix matrix, Vertex source) {
 		for (Vertex v = minVertex + 1; v < MAX; v++) {
 			int weight = matrix[minVertex][v];
 
-			if (weight + weights[minVertex] < weights[v]) {
+			if (visited[v] == 0 && weight + weights[minVertex] < weights[v]) {
 				weights[v] = weight + weights[minVertex];
 			}
 		}
