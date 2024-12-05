@@ -28,7 +28,7 @@ void dijkstra(Matrix matrix, Vertex source) {
 
 	weights[source] = 0;
 
-	for (int n = 0; n < MAX; n++) {
+	for (int n = 1; n < MAX; n++) {
 		Vertex minVertex = getMinWeightVertex(visited, weights);
 
 		visited[minVertex] = 1;
